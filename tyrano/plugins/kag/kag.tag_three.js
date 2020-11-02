@@ -411,10 +411,6 @@ tyrano.plugin.kag.tag["3d_init"] = {
 						
 						collision_event_name = objs_zf[0].object.name;
 						
-						console.log("zf wwwwwwwwww");
-						console.log(objs_zf[0].object.name);
-						console.log(camera.rotation.y);
-					
 					}
 					
 				}
