@@ -931,6 +931,7 @@ tyrano.plugin.kag.tag["3d_sphere_new"] = {
 
 
 
+
 /*
  #[3d_sprite_new]
  :group
@@ -3925,6 +3926,9 @@ tyrano.plugin.kag.tag["3d_fps_control"] = {
 	
 		window.addEventListener( 'keydown', this._onKeyDown, false );
 		window.addEventListener( 'keyup', this._onKeyUp, false );
+		
+		TYRANO.kag.tmp.three.stat.fps.active=true; 
+		
 		
         this.kag.ftag.nextOrder();
         
