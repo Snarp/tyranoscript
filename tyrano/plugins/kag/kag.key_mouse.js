@@ -104,7 +104,7 @@ tyrano.plugin.kag.key_mouse = {
         $(document).keydown(function(e) {
             
             if(that.is_keydown==true){
-                return false;
+                return true;
             }
             
             //メニュー系が表示されている時。
