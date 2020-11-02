@@ -111,7 +111,7 @@ tyrano.plugin.kag ={
 				
 				fps:{
 					
-					active:true,
+					active:false,
 					
 					movementSpeed:100,
 					rotateSpeed:1,
