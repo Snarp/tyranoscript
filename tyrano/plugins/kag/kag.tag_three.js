@@ -930,6 +930,7 @@ tyrano.plugin.kag.tag["3d_sphere_new"] = {
 };
 
 
+
 /*
  #[3d_sprite_new]
  :group
@@ -1031,9 +1032,14 @@ tyrano.plugin.kag.tag["3d_sprite_new"] = {
 				model.scale.set((parseInt(width)*1),(parseInt(height)*1),1);
 	        }else{
 		    	let scale = $.three_pos(pm.scale);
-				model.scale.set((parseInt(width)*scale.x),(parseInt(height)*scale.y),1);
-				//model.scale.set(scale.x,scale.y,scale.z);
-		    }
+				
+				//ロードからの呼び出しの場合はこちら。
+				if(pm._load){
+					model.scale.set(scale.x,scale.y,scale.z);
+		    	}else{
+					model.scale.set((parseInt(width)*scale.x),(parseInt(height)*scale.y),1);
+				}
+			}
 	        
 			var three = this.kag.tmp.three;
 	        var scene = three.scene;
