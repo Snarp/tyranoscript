@@ -133,6 +133,8 @@ tyrano.plugin.kag ={
 					
 					ground:"",
 					
+					isJoy:false,
+					
 					
 				}
 				
