@@ -561,6 +561,12 @@ tyrano.plugin.kag.tag["3d_init"] = {
         //const light = new THREE.DirectionalLight(0xffffff, parseFloat(pm.directional_light));
 		//scene.add(light);
         
+        //オーディオリスナー
+        const listener = new THREE.AudioListener();
+		camera.add( listener );
+		
+        
+        
         this.kag.tmp.three.stat.is_load = true;
         this.kag.tmp.three.stat.canvas_show = true;
         this.kag.tmp.three.stat.init_pm = pm;
@@ -569,6 +575,8 @@ tyrano.plugin.kag.tag["3d_init"] = {
         this.kag.tmp.three.scene = scene;
         this.kag.tmp.three.renderer = renderer;
         this.kag.tmp.three.light_amb = light_amb;
+        
+        this.kag.tmp.three.audio_listener = listener;
         
         this.kag.tmp.three.group = {};
         this.kag.tmp.three.group["default"] = [];
@@ -4673,6 +4681,7 @@ tyrano.plugin.kag.tag["3d_text_new"] = {
         size:"42",
         canvas_width:"1500",
         canvas_height:"100",
+        color:"",
         
         width:"5",
         height:"5",
@@ -4704,8 +4713,13 @@ tyrano.plugin.kag.tag["3d_text_new"] = {
 	    // 透過率50%の青背景を描く
 	    ctx.fillStyle = 'rgba(0, 0, 0, 0)';
 	    ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-	    //
-	    ctx.fillStyle = 'black';
+	    
+	    if (pm.color != "") {
+            ctx.fillStyle = $.convertColor(pm.color);
+        }else{
+        	ctx.fillStyle = "black";
+	    }
+        
 	    ctx.font = pm.size+"px sans-serif";
 	    
 	    ctx.fillText(
@@ -4765,6 +4779,136 @@ tyrano.plugin.kag.tag["3d_text_new"] = {
 
 
 
+/*
+ #[3d_sound_new]
+ :group
+ 3D関連
+ 
+ :title
+ 3Dテキスト
+ 
+ :exp
+ 3D空間にテキストを表示できます。
+ 
+ :sample
+ 
+[3d_new_text name="text1" text="あああ" ]
+[3d_show name="text1"]
+
+ :param
+ name=3Dオブジェクトの名前です。この名前をつかって表示・非表示などの制御を行います。,
+ text=表示するテキスト文字列を指定します,
+ pos=3Dオブジェクトを配置する座標を指定します。半角のカンマで区切ってxyz座標を表します。 ,
+ rot=3Dオブジェクトの傾きを指定します。半角カンマで区切ってxyz軸の回転を設定します。,
+ scale=3Dオブジェクトの拡大率を指定します。半角カンマで区切ってxyz軸の拡大率を指定します。,
+ size=フォントサイズ。デフォルトは42, 
+ sprite=true or falseを指定。trueを指定すると常に正面をむくテキストを作成します。デフォルトはfalse
+  
+
+ #[end]
+ */
+
+//サウンドを再生する
+tyrano.plugin.kag.tag["3d_sound"] = {
+
+    vital : [],
+     	
+    pm : {
+        
+        name:"",
+        target_name:"", //オブジェクト。このオブジェクトがある場所で鳴らす。
+        pos:"0,0,0",
+        folder:"",
+        storage:"",
+        loop:"false",
+        volume:"",
+        next:"true"
+        
+    },
+
+    start : function(pm) {
+		
+		let three = TYRANO.kag.tmp.three; 
+		
+		var folder = "";
+        if (pm.folder != "") {
+            folder = pm.folder;
+        } else {
+            folder = "others/3d/audio";
+        }
+		
+		var storage_url = "" ;
+        if ($.isHTTP(pm.storage)) {
+            storage_url = pm.storage;
+        } else {
+            storage_url = "./data/" + folder + "/" + pm.storage;
+        }
+        
+		// create a global audio source
+		const sound = new THREE.PositionalAudio( three.audio_listener );
+		
+		let pos = $.three_pos(pm.pos);
+		
+		if(pm.target_name !="" ){
+			
+			//$.three_pos("10,10,10");
+			if($.checkThreeModel(pm.target_name) == false){
+	    		return;  
+	    	}
+        
+			var model = this.kag.tmp.three.models[pm.target_name].model;
+			console.log(model);
+			pos.x = model.position.x;
+			pos.y = model.position.y;
+			pos.z = model.position.z;
+			
+		}
+		
+        //サウンドのポジション
+        sound.position.x = pos.x ;
+        sound.position.y = pos.y ;
+        sound.position.z = pos.z ; 
+		
+		// load a sound and set it as the Audio object's buffer
+		const audioLoader = new THREE.AudioLoader();
+		
+		audioLoader.load( storage_url, function( buffer ) {
+		
+			sound.setBuffer( buffer );
+			
+			if(pm.loop=="true"){
+				sound.setLoop( true );
+			}
+			
+			var volume = 1;
+			if (pm.volume !== "") {
+	            volume = parseFloat(parseInt(pm.volume) / 100);
+	        }
+	      	
+			sound.setVolume( volume );
+			sound.setRefDistance( 20 );
+			
+			sound.onEnded = function(){
+				if(pm.loop=="false"){
+					three.scene.remove(sound);
+				}
+			};
+			
+			sound.play();
+			
+		});
+		
+		
+		three.scene.add( sound );
+		
+		if(pm.next == "true"){
+			TYRANO.kag.ftag.nextOrder();
+        }		
+		
+    },
+    
+        
+};
 
 
 
