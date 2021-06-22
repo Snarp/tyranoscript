@@ -1460,15 +1460,6 @@ tyrano.plugin.kag.tag["3d_sprite_new"] = {
 				model.scale.set((parseInt(width)*1),(parseInt(height)*1),1);
 	        }else{
 		    	
-		    	
-		    	if(pm.scale==""){
-					model.scale.set((parseInt(width)*1),(parseInt(height)*1),1);
-		        }else{
-			    	let scale = $.three_pos(pm.scale);
-					model.scale.set(scale.x,scale.y,scale.z);
-			    }
-			    
-		    	/*
 		    	let scale = $.three_pos(pm.scale);
 				
 				model.scale.set(scale.x,scale.y,scale.z);
@@ -1480,7 +1471,6 @@ tyrano.plugin.kag.tag["3d_sprite_new"] = {
 		    	}else{
 					model.scale.set((parseInt(width)*scale.x),(parseInt(height)*scale.y),1);
 				}
-				*/
 				
 				
 			}

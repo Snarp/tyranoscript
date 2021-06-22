@@ -890,6 +890,7 @@ tyrano.plugin.kag.menu = {
 		    		pm["pos"] = model.pos;
 		    		pm["rot"] = model.rot;
 		    		pm["scale"] = model.scale;
+		    		pm["_load"] = "true";
 		    		
 		    		var tag = pm._tag;
 		    		
@@ -899,12 +900,8 @@ tyrano.plugin.kag.menu = {
 			    	
 			    	pm["next"]="false";
 			    	
-			    	console.log("=========");
-			    	console.log(tag);
-			    	console.log(pm);
-		    		
 		    		this.kag.ftag.startTag(tag,pm);
-				
+					
 				}
 	        
 			    //ジャイロの復元
