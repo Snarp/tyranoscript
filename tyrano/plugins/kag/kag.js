@@ -111,9 +111,39 @@ tyrano.plugin.kag ={
 					
 				},
 				
+				fps:{
+					
+					active:false,
+					
+					movementSpeed:100,
+					rotateSpeed:0.5,
+					
+					tmpMoveBuffer:0,
+					tmpRotateBuffer:0,
+					
+					offMoveBufferF:false,
+					offMoveBufferB:false,
+					offRotateBufferL:false,
+					offRotateBufferR:false,
+					
+					is_colid:false,
+					
+					moveForward:false,
+					moveBackward:false,
+					rotateLeft:false,
+					rotateRight:false,
+					
+					ground:"",
+					
+					isJoy:false,
+					
+					
+				}
+				
             },
             
             models:{},
+            groups:{},
             evt:{},
         },
         
