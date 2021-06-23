@@ -104,6 +104,11 @@ tyrano.plugin.kag.key_mouse = {
         $(document).keydown(function(e) {
             
             if(that.is_keydown==true){
+	            
+	            if(TYRANO.kag.tmp.three.stat.fps.active==true){
+		        	return true;   
+		        }
+	            
                 return false;
             }
             

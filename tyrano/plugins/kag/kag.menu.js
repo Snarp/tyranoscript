@@ -351,8 +351,6 @@ tyrano.plugin.kag.menu = {
         three_save.models = save_models;
         
         /////////////////////////////////////////////////////////////
-            
-       
         
         if(typeof flag_thumb =="undefined"){
             flag_thumb = this.kag.config.configThumbnail;
