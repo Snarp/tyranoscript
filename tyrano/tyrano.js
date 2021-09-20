@@ -39,7 +39,6 @@ tyrano.core ={
         
         this.config = window.config;
         
-        
         //スクリプトをロードして、そのオブジェクトを作成
         //alert("wwwww");
         that.loadModule();

@@ -12,6 +12,8 @@ class ThreeModel {
         this.pm    = obj.pm;
         */
         
+		this.three = three;
+		
         for(let key in obj){
 	    	this[key] = obj[key];
 	    }
@@ -28,7 +30,6 @@ class ThreeModel {
 			this.opacity(0);
         }
 	    
-        
         this.anim_obj = {};
         
     }   
@@ -59,6 +60,25 @@ class ThreeModel {
 	
 		this.model.rotation.set(x,y,z);
     
+	}
+	
+	setOutline() {
+		/*
+		var hex  = 0xff0000;
+		var bbox = new THREE.BoundingBoxHelper(this.model, hex );
+		bbox.update();
+		this.model.add( bbox );
+		*/
+		
+		//console.log("ggggggggg");
+		//console.log(this.model);
+		
+		//var axisHelper = new THREE.AxisHelper(50);
+		//this.model.add( axisHelper );
+		
+		this.three.outlinePass.selectedObjects = [];
+		this.three.outlinePass.selectedObjects.push(this.model);
+		
 	}
 	
 	fade(direction,options,cb){
@@ -260,7 +280,9 @@ class ThreeModel {
 	        
         }
         
-    }
+	}
+	
+	
     
     setUserData(key,val){
 		
@@ -312,5 +334,6 @@ class ThreeModel {
 		
 	
 	}
+	
 
 }

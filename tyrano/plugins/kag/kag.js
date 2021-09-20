@@ -36,6 +36,7 @@ tyrano.plugin.kag ={
         TYRANO_ENGINE_VERSION:400,
         "BASE_DIV_NAME":"tyrano_base",
         FLAG_APRI : false,
+        "www":""
         
     },
     
@@ -132,7 +133,9 @@ tyrano.plugin.kag ={
 					rotateLeft:false,
 					rotateRight:false,
 					
-					ground:"",
+                    ground: "",
+                    
+                    is_fps_studio:false,
 					
 					isJoy:false,
 					
@@ -1217,9 +1220,19 @@ tyrano.plugin.kag ={
 			    "./tyrano/libs/three/loader/MTLLoader.js",
 			    //"./tyrano/libs/three/loader/MMDLoader.js",
 			    
-			    "./tyrano/libs/three/controls/OrbitControls.js",
-			    "./tyrano/libs/three/classes/ThreeModel.js",
-			    
+                "./tyrano/libs/three/controls/OrbitControls.js",
+                //"./tyrano/libs/three/controls/TrackballControls.js",
+                "./tyrano/libs/three/controls/TransformControls.js",
+                
+                "./tyrano/libs/three/classes/ThreeModel.js",
+                
+			    "./tyrano/libs/three/shader/CopyShader.js",
+                "./tyrano/libs/three/postprocessing/EffectComposer.js",
+                "./tyrano/libs/three/postprocessing/ShaderPass.js",
+                "./tyrano/libs/three/postprocessing/RenderPass.js",
+                "./tyrano/libs/three/postprocessing/OutlinePass.js",
+                
+                
 			];
 			
 		}

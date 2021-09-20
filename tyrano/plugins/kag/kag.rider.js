@@ -26,7 +26,9 @@ tyrano.plugin.kag.rider = {
     },
 
     cutTyranoTag : function(tag, pm) {
-
+        
+        console.log(tag);
+        console.log(pm);
         TYRANO.kag.ftag.startTag(tag, pm);
 
     },

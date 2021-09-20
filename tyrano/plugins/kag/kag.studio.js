@@ -330,6 +330,33 @@ tyrano.plugin.kag.studio = {
         }
 
     },
+    
+    //未使用
+    getCameraCrossPos: function () {
+        
+        var three = TYRANO.kag.tmp.three;
+        var camera = three.camera;
+            
+        var raycaster = new THREE.Raycaster( three.camera.position, vector.sub( camera.position ).normalize() );
+        var intersects = raycaster.intersectObjects(three.scene.children, true);
+        var name = "";
+        
+        if (intersects.length > 0) {
+            
+            for (key in intersects) {
+                
+                console.log(intersects[key]);
+                
+                if (typeof intersects[key].object.userData["name"] != "undefined") {
+                    name = intersects[key].object.userData["name"]
+                    break;
+                }
+                
+            }
+            
+        }
+        
+    }
 
     
     
