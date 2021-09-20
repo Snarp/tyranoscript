@@ -127,11 +127,14 @@ tyrano.plugin.kag.layer ={
         
         system = system || "root_layer_game";
         
+        layer_obj.attr("data-parent-layer",system);
+        
         if(system!=""){
             $("."+this.kag.define.BASE_DIV_NAME).find("#"+system).append(layer_obj);
         }else{
             $("."+this.kag.define.BASE_DIV_NAME).append(layer_obj);
         }
+        
     },
     
     //全景レイヤにオブジェクトを追加する
@@ -171,6 +174,11 @@ tyrano.plugin.kag.layer ={
     
     //メッセージレイヤの消去
     hideMessageLayers:function(){
+        
+        //link表示中はダメ。
+        if(this.kag.stat.display_link==true){
+	    	return false;
+	    }
         
         this.kag.stat.is_hide_message = true ;
         
@@ -347,17 +355,23 @@ tyrano.plugin.kag.layer ={
         var that = this;
         
         for(key in layer.map_layer_fore){
-                this["map_layer_fore"][key].remove();
-                delete this["map_layer_fore"][key];
-                this["map_layer_fore"][key] = $(layer["map_layer_fore"][key]);
-                this.appendLayer(this["map_layer_fore"][key]);
+            this["map_layer_fore"][key].remove();
+            delete this["map_layer_fore"][key];
+            this["map_layer_fore"][key] = $(layer["map_layer_fore"][key]);
+            
+            var parent_layer = this["map_layer_fore"][key].attr("data-parent-layer");
+            this.appendLayer(this["map_layer_fore"][key],parent_layer);
+            
          }
         
         for(key in layer.map_layer_back){
-                this["map_layer_back"][key].remove();
-                delete this["map_layer_back"][key];
-                this["map_layer_back"][key] = $(layer["map_layer_back"][key]);
-                this.appendLayer(this["map_layer_back"][key]);
+            this["map_layer_back"][key].remove();
+            delete this["map_layer_back"][key];
+            this["map_layer_back"][key] = $(layer["map_layer_back"][key]);
+            
+            var parent_layer = this["map_layer_fore"][key].attr("data-parent-layer");
+            this.appendLayer(this["map_layer_back"][key],parent_layer);
+            
          }
 
 //fixlayerの削除
@@ -409,7 +423,7 @@ tyrano.plugin.kag.layer ={
          this.layer_free.remove();
          delete this.layer_free ;
          this.layer_free = $(layer.layer_free);
-         this.appendLayer(this.layer_free);
+         this.appendLayer(this.layer_free,"root_layer_system");
          
         
     },

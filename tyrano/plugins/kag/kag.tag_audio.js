@@ -76,9 +76,11 @@ tyrano.plugin.kag.tag.playbgm = {
             
             if (this.kag.stat.is_skip == true && pm.target == "se") {
                 
-                that.kag.layer.showEventLayer();
-                that.kag.ftag.nextOrder();
-
+                if(pm.stop == "false") {
+					that.kag.layer.showEventLayer();
+                	that.kag.ftag.nextOrder();
+				}
+				
             } else {
                 
                 //スマホからのアクセスで ready audio 出来ていない場合は、クリックを挟む
@@ -508,7 +510,18 @@ tyrano.plugin.kag.tag.stopbgm = {
 
                     //フェードアウトしながら再生停止
                     if (pm.fadeout == "true") {
+	                    
                         _audio_obj.fade(_audio_obj.volume(), 0, parseInt(pm.time));
+                        
+                        //fadeが完了した際にvolumeが0だったらstopを行う処理を追加
+                        if (_audio_obj.playing()) {
+                            _audio_obj.once('fade', () => {
+                                if(_audio_obj.volume() === 0){
+                                    _audio_obj.stop();
+                                }
+                            });
+                        }
+                        
                         
                     } else {
 

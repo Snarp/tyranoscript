@@ -928,7 +928,7 @@ tyrano.plugin.kag.tag.anim = {
             //アニメーションスタックの積み上げ
             $("." + pm.name ).each(function(){
         　　　　that.kag.pushAnimStack();
-        　　　　$(this).animate(anim_style, parseInt(pm.time), pm.effect, function () {
+        　　　　$(this).stop(true,true).animate(anim_style, parseInt(pm.time), pm.effect, function () {
                   that.kag.popAnimStack()
         　　　　})
         　　})
@@ -950,7 +950,7 @@ tyrano.plugin.kag.tag.anim = {
 
                 that.kag.pushAnimStack();
 
-                $(this).animate(anim_style, parseInt(pm.time), pm.effect, function() {
+                $(this).stop(true,true).animate(anim_style, parseInt(pm.time), pm.effect, function() {
                     that.kag.popAnimStack();
 
                 });
@@ -1421,6 +1421,7 @@ tyrano.plugin.kag.tag.chara_ptext = {
         this.kag.layer.hideEventLayer();
 
         if (pm.name == "") {
+	        
             $("." + this.kag.stat.chara_ptext).html("");
 
             //全員の明度を下げる。誰も話していないから
@@ -1586,8 +1587,8 @@ tyrano.plugin.kag.tag.chara_ptext = {
         }
         
         
-        chara_obj.animate(a_obj, anim_time, "easeOutQuad",function(){
-            chara_obj.animate(b_obj, anim_time, "easeOutQuad",function(){
+        chara_obj.stop(true,true).animate(a_obj, anim_time, "easeOutQuad",function(){
+            chara_obj.stop(true,true).animate(b_obj, anim_time, "easeOutQuad",function(){
                 delete that.kag.tmp.map_chara_talk_top[name];
             });
         });
@@ -1776,40 +1777,54 @@ tyrano.plugin.kag.tag.chara_new = {
         height : "",
         reflect : "false",
         jname : "",
-        visible : "false",
+        
         color : "",
-        map_face : {}
+        map_face : {},
+        fuki:{enable:"false"},
+        
+        is_show:"false",
+        
     },
 
     start : function(pm) {
 
         //イメージの追加
-
+		
         var storage_url = "./data/fgimage/" + pm.storage;
 
         //HTTP対応
         if ($.isHTTP(pm.storage)) {
             storage_url = pm.storage;
         }
-
+		
         pm.map_face["default"] = pm.storage;
-
-        this.kag.preload(storage_url);
-
-        //即座に追加
-        if (pm.visible == "true") {
-
-        }
-
-        //前景レイヤ
+        
         this.kag.stat.charas[pm.name] = pm;
         
         //キャラクターの日本語名とnameを紐付けるための処置
         if(pm.jname!=""){
             this.kag.stat.jcharas[pm.jname]=pm.name;
         }
+        
+        this.kag.preload(storage_url,(img_obj)=>{
+	    	
+	    	if(img_obj){
+		    	
+		    	let img_width = $(img_obj).get(0).width;
+		    	let img_height = $(img_obj).get(0).height;
+		    	
+		    	this.kag.stat.charas[pm.name]["origin_width"] = img_width;
+		    	this.kag.stat.charas[pm.name]["origin_height"] = img_height;
+		    	
+		    	this.kag.stat.charas[pm.name]["fuki"]["left"] = Math.round(img_width/2);
+		    	this.kag.stat.charas[pm.name]["fuki"]["top"] = Math.round(img_height/3);
+		    	
+		    }
+		    
+			this.kag.ftag.nextOrder();
 
-        this.kag.ftag.nextOrder();
+	    });
+
 
     }
 };
@@ -1871,7 +1886,7 @@ tyrano.plugin.kag.tag.chara_show = {
     },
 
     start : function(pm) {
-
+	
         var that = this;
 
         var cpm = this.kag.stat.charas[pm.name];
@@ -1885,11 +1900,29 @@ tyrano.plugin.kag.tag.chara_show = {
 
         //すでにキャラクターが登場している場合は無視する
         var check_obj = $(".layer_fore").find("." + pm.name);
+        
+        check_obj.stop(true,true);
+		
         if (check_obj.get(0)) {
-            that.kag.ftag.nextOrder();
-            return;
-        }
-
+	        
+	        check_obj.stop(true,true);
+			
+			if(check_obj.css("display")!="none"){
+				that.kag.ftag.nextOrder();
+				return;
+	        }
+	        
+        }else{
+	        //別の方法で消された場合
+	    	cpm.is_show="false";
+	    }
+        
+        //スキップ時にロードとの間で分身するやつ
+		if(cpm.is_show == "true"){
+			that.kag.ftag.nextOrder();
+			return;
+		}
+		
         var storage_url = "./data/fgimage/" + cpm.storage;
         
         if ($.isHTTP(cpm.storage)) {
@@ -1916,7 +1949,6 @@ tyrano.plugin.kag.tag.chara_show = {
             that.kag.stat.charas[pm.name]["storage"] = pm.storage;
             
         }
-        
         
         var j_chara_root = $("<div></div>");
         j_chara_root.css({
@@ -2034,10 +2066,14 @@ tyrano.plugin.kag.tag.chara_show = {
         
         array_storage.push(storage_url);
         
+        //
+        cpm.is_show = "true";
+        
+        
         //画像は事前にロードしておく必要がありそう
         this.kag.preloadAll(array_storage, function() {
-
-            var target_layer = that.kag.layer.getLayer(pm.layer, pm.page);
+		
+		    var target_layer = that.kag.layer.getLayer(pm.layer, pm.page);
 
             //最後に挿入
             //div内に追加。深さを指定する。
@@ -2094,11 +2130,11 @@ tyrano.plugin.kag.tag.chara_show = {
 
                     if (that.kag.stat.chara_anim == "false") {
 
-                        j_chara.fadeTo(parseInt(that.kag.cutTimeWithSkip(pm.time)), 0, function() {
+                        j_chara.stop(true,true).fadeTo(parseInt(that.kag.cutTimeWithSkip(pm.time)), 0, function() {
 
                             j_chara.css("left", left);
 
-                            j_chara.fadeTo(parseInt(that.kag.cutTimeWithSkip(that.kag.stat.pos_change_time)), 1, function() {
+                            j_chara.stop(true,true).fadeTo(parseInt(that.kag.cutTimeWithSkip(that.kag.stat.pos_change_time)), 1, function() {
 
                                 chara_num--;
                                 if (chara_num == 0) {
@@ -2113,7 +2149,7 @@ tyrano.plugin.kag.tag.chara_show = {
 
                     } else {
 
-                        j_chara.animate({
+                        j_chara.stop(true,true).animate({
                             left : left
                         }, parseInt(that.kag.cutTimeWithSkip(that.kag.stat.pos_change_time)), that.kag.stat.chara_effect, function() {
                             chara_num--;
@@ -2177,9 +2213,9 @@ tyrano.plugin.kag.tag.chara_show = {
             if (pm.wait != "true") {
                 that.kag.ftag.nextOrder();
             }
-
+			
             //アニメーションでj表示させます
-            j_chara_root.animate({
+            j_chara_root.stop(true,true).animate({
                 opacity : "show"
             }, {
                 duration : parseInt(that.kag.cutTimeWithSkip(pm.time)),
@@ -2249,7 +2285,24 @@ tyrano.plugin.kag.tag.chara_hide = {
         var target_layer = this.kag.layer.getLayer(pm.layer, pm.page);
         
         var img_obj = target_layer.find("." + pm.name);
+		
+		var cpm = this.kag.stat.charas[pm.name];
+        cpm.is_show = "false";
+		
+		//画面上に存在しないなら無視する。
+		img_obj.stop(true,true);
+		if (!img_obj.get(0)) {
+	        
+	        img_obj.stop(true,true);
+			
+			if(img_obj.css("display")=="none"){
+				that.kag.ftag.nextOrder();
+				return;
+	        }
+	        
+        }
 
+		
          //キャラがいない場合、次へ
         if (!img_obj.get(0)) {
             that.kag.ftag.nextOrder();
@@ -2260,7 +2313,7 @@ tyrano.plugin.kag.tag.chara_hide = {
         that.kag.layer.hideEventLayer();
 
         //アニメーションでj表示させます
-        img_obj.animate({
+        img_obj.stop(true,true).animate({
             opacity : "hide"
         }, {
             duration : parseInt(that.kag.cutTimeWithSkip(pm.time)),
@@ -2304,11 +2357,11 @@ tyrano.plugin.kag.tag.chara_hide = {
 
                         if (that.kag.stat.chara_anim == "false") {
 
-                            j_chara.fadeTo(parseInt(that.kag.cutTimeWithSkip(pm.time)), 0, function() {
+                            j_chara.stop(true,true).fadeTo(parseInt(that.kag.cutTimeWithSkip(pm.time)), 0, function() {
 
                                 j_chara.css("left", left);
 
-                                j_chara.fadeTo(parseInt(that.kag.cutTimeWithSkip(that.kag.stat.pos_change_time)), 1, function() {
+                                j_chara.stop(true,true).fadeTo(parseInt(that.kag.cutTimeWithSkip(that.kag.stat.pos_change_time)), 1, function() {
 
                                     chara_num--;
                                     if (chara_num == 0) {
@@ -2323,7 +2376,7 @@ tyrano.plugin.kag.tag.chara_hide = {
 
                         } else {
 
-                            j_chara.animate({
+                            j_chara.stop(true,true).animate({
                                 left : left
                             }, parseInt(that.kag.cutTimeWithSkip(that.kag.stat.pos_change_time)), that.kag.stat.chara_effect, function() {
 
@@ -2363,7 +2416,7 @@ tyrano.plugin.kag.tag.chara_hide = {
 
         //すぐに次の命令を実行
         if (pm.wait != "true") {
-            this.kag.ftag.nextOrder();
+	        this.kag.ftag.nextOrder();
         }
 
         //this.kag.ftag.nextOrder();
@@ -2414,13 +2467,20 @@ tyrano.plugin.kag.tag.chara_hide_all = {
         var flag_complete = false;
         //アニメーションでj表示させます
         
+        //すべてのキャラを非表示状態にする
+        var charas  = this.kag.stat.charas;
+        for(let key in charas){
+	    	charas[key].is_show="false";
+	    }
+        
+        
         //キャラがいない場合、次へ
         if (!img_obj.get(0)) {
             that.kag.ftag.nextOrder();
             return;
         }
         
-        img_obj.animate({
+        img_obj.stop(true,true).animate({
             opacity : "hide"
         }, {
             duration : parseInt(that.kag.cutTimeWithSkip(pm.time)),
@@ -2599,6 +2659,9 @@ tyrano.plugin.kag.tag.chara_mod = {
             
             if (chara_time != "0") {
                 
+                //アニメーションの停止
+                $(".layer_fore").find("." + pm.name).stop(true,true);
+                
                 var j_new_img = $(".layer_fore").find("." + pm.name).clone();
                 j_new_img.find(".chara_img").attr("src", folder + storage_url);
                 j_new_img.css("opacity", 0);
@@ -2609,15 +2672,15 @@ tyrano.plugin.kag.tag.chara_mod = {
                 j_img.after(j_new_img);
     
                 if(pm.cross=="true"){
-                    j_img.fadeTo(parseInt(that.kag.cutTimeWithSkip(chara_time)), 0, function() {
+                    j_img.stop(true,true).fadeTo(parseInt(that.kag.cutTimeWithSkip(chara_time)), 0, function() {
                         //alert("完了");
                     });
                 }
     
-                j_new_img.fadeTo(parseInt(that.kag.cutTimeWithSkip(chara_time)), 1, function() {
+                j_new_img.stop(true,true).fadeTo(parseInt(that.kag.cutTimeWithSkip(chara_time)), 1, function() {
                     
                     if(pm.cross=="false"){
-                        j_img.fadeTo(parseInt(that.kag.cutTimeWithSkip(chara_time)),0,function(){
+                        j_img.stop(true,true).fadeTo(parseInt(that.kag.cutTimeWithSkip(chara_time)),0,function(){
                             
                             j_img.remove();
                             
@@ -2640,6 +2703,9 @@ tyrano.plugin.kag.tag.chara_mod = {
                 });
     
             } else {
+                
+                //アニメーションの停止
+                $(".layer_fore").find("." + pm.name).stop(true,true);
                 
                 $(".layer_fore").find("." + pm.name).find(".chara_img").attr("src", folder + storage_url);
                 
@@ -2775,7 +2841,8 @@ tyrano.plugin.kag.tag.chara_move = {
         if (pm.name != "") {
             
             if(pm.anim=="true"){
-                target_obj.animate(anim_style, parseInt(pm.time), pm.effect, function() {
+	            
+                target_obj.stop(true,true).animate(anim_style, parseInt(pm.time), pm.effect, function() {
                     
                     if(pm.wait=="true"){
                         that.kag.ftag.nextOrder();
@@ -2783,19 +2850,19 @@ tyrano.plugin.kag.tag.chara_move = {
                     
                 });
                 
-                target_img.animate(img_anim_style, parseInt(pm.time), pm.effect, function() {
+                target_img.stop(true,true).animate(img_anim_style, parseInt(pm.time), pm.effect, function() {
                     
                 });
                 
                 
             }else{
                 
-                target_obj.fadeTo(parseInt(that.kag.cutTimeWithSkip(pm.time))/2, 0, function() {
+                target_obj.stop(true,true).fadeTo(parseInt(that.kag.cutTimeWithSkip(pm.time))/2, 0, function() {
                     
                     target_obj.css(anim_style);
                     target_img.css(img_anim_style);
                     
-                    target_obj.fadeTo(parseInt(that.kag.cutTimeWithSkip(pm.time))/2, 1,function(){
+                    target_obj.stop(true,true).fadeTo(parseInt(that.kag.cutTimeWithSkip(pm.time))/2, 1,function(){
                         if(pm.wait=="true"){
                             that.kag.ftag.nextOrder();
                         }
@@ -3164,11 +3231,11 @@ tyrano.plugin.kag.tag.chara_part = {
                         //イメージを追加
                         j_img.after(j_new_img);
                         
-                        j_img.fadeTo(parseInt(pm.time), 0, function(){
+                        j_img.stop(true,true).fadeTo(parseInt(pm.time), 0, function(){
                             j_img.remove();
                         }); 
                         
-                        j_new_img.fadeTo(parseInt(pm.time), 1, function(){
+                        j_new_img.stop(true,true).fadeTo(parseInt(pm.time), 1, function(){
                             n++;
                             if(pm.wait=="true"){
                                 if(cnt==n){ 

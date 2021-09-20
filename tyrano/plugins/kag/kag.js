@@ -27,7 +27,8 @@ tyrano.plugin.kag ={
       skipSpeed:"30",
       patch_apply_auto:"true",
       mediaFormatDefault:"ogg",
-      configSave:"webstorage"
+      configSave:"webstorage",
+      configSaveOverwrite:"false",
         
     }, //読み込んできた値 Config.tjs の値
     
@@ -247,6 +248,8 @@ tyrano.plugin.kag ={
         f_chara_ptext:"false",
         
         flag_glyph : "false", //クリック待ちボタンが指定されているか否か
+        path_glyph : "nextpage.gif", //glyph画像ファイル名
+        
         current_cursor:"auto", //現在のカーソル指定
         
         //表示フォント指定
@@ -275,6 +278,7 @@ tyrano.plugin.kag ={
         
         //リセットされた時に適応されるオリジナルフォント設定
         default_font:{
+	        
             color:"",
             bold:"",
             size:"",
@@ -286,6 +290,20 @@ tyrano.plugin.kag ={
             effect_speed:"",
         
         },
+        
+        //ふきだしで使用するパラメータ郡
+        fuki:{
+	        
+	        def_style:{}, //ポジションで指定されたスタイルを保持する
+	        def_style_inner:{},
+	        def_pm:{}, //positionで指定されたパラメータを保持する
+	        active:false,
+	    	marginr:0,
+	    	marginb:0,
+	    	
+	    	others_style:{},
+	    	
+	    },
         
         //システム系で使用するHTMLの場所を保持
         sysview:{
@@ -737,7 +755,7 @@ tyrano.plugin.kag ={
         this.studio.init();
         
         //セーブデータ認証用のKey確認（ローカルストレージ）
-        if($.isElectron()){
+        if($.isElectron() && that.kag.config.configSave =="file"){
 	        
 	        //PC
 	        if(process.execPath.indexOf("var/folders")!=-1){
@@ -768,10 +786,26 @@ tyrano.plugin.kag ={
 			if(tmp_array["hash"] != that.save_key_val){
 				
 				alert($.lang("save_file_violation_1"));
-				alert($.lang("save_file_violation_2"));
-			
-				return false;
-			    
+				
+				if(that.kag.config.configSaveOverwrite=="true"){
+				
+					if(confirm($.lang("save_file_violation_2"))){
+						
+						tmp_array["hash"] = that.save_key_val;
+						$.setStorage(that.kag.config.projectID + "_tyrano_data", tmp_array, that.kag.config.configSave);
+		            
+					}else{
+					
+						alert($.lang("save_file_violation_3"));
+						return false;
+				    
+					}
+				
+				}else{
+					alert($.lang("save_file_violation_3"));
+					return false;
+				}
+				
 			}
 		
 				
@@ -1390,6 +1424,156 @@ tyrano.plugin.kag ={
         
     },
     
+    //吹き出しのスタイルをアップデートする
+    updateFuki:function(chara_name,opt={}){
+		
+		if(!$(".tyrano_base").find("#tmp_style").get(0)){
+			$(".tyrano_base").prepend("<style id='tmp_style' type='text/css'></style>");
+		}
+		
+		var msg_inner_layer = this.kag.getMessageInnerLayer();
+		var msg_outer_layer = this.kag.getMessageOuterLayer();
+		
+		if(chara_name=="others"){
+			$("#tmp_style").html("");
+			return false;
+		}
+		
+		var fuki_chara = this.kag.stat.charas[chara_name]["fuki"];    
+        
+        fuki_chara["sippo_width"] = parseInt(fuki_chara["sippo_width"]);
+        fuki_chara["sippo_height"] = parseInt(fuki_chara["sippo_height"]);
+        
+		let fuki_def_style = this.kag.stat.fuki.def_style;
+		
+		let border_size = parseInt(msg_outer_layer.css("border-width"));
+		
+		let sippo_left = fuki_chara.sippo_left;
+		
+		let style_text ="";
+		let style_text_after="";
+		let style_text_before="";
+		
+		if(fuki_chara.sippo=="top" || fuki_chara.sippo=="bottom"){
+			
+			sippo_left = opt.sippo_left + parseInt(fuki_chara.sippo_left); 
+			style_text = "left:"+sippo_left+"px;";
+		
+		}else{
+			
+			sippo_left = opt.sippo_left + parseInt(fuki_chara.sippo_top); 
+			style_text = "top:"+sippo_left+"px;";
+		
+		}
+		
+		style_text_key = "";
+		
+		//トップ指定の場合
+		
+		if(fuki_chara.sippo=="top"){
+			
+			style_text+="bottom:100%;";
+			style_text_key="bottom";
+				
+		}else if(fuki_chara.sippo=="bottom"){
+			
+			style_text+="top:100%;";
+			style_text_key="top";
+			
+		}else if(fuki_chara.sippo=="left"){
+			
+			style_text+="right:100%;";
+			style_text_key="right";
+				
+		}else if(fuki_chara.sippo=="right"){
+			
+			style_text+="left:100%;";
+			style_text_key="left";
+			
+		}
+		
+		
+		style_text_after = "border-bottom-color:";
+		
+		let str_css = `
+		
+		.fuki_box:after,.fuki_box:before{
+		    border: solid transparent;
+		    content:'';
+		    height:0;
+		    width:0;
+		    pointer-events:none;
+		    position:absolute;
+		    ${style_text}
+		}
+		`;
+		
+		let str_css2 ="";
+		
+		if(fuki_chara.sippo=="top" || fuki_chara.sippo=="bottom"){
+			
+			str_css2 = `
+			
+			.fuki_box:after{
+	
+			    border-color: ${msg_outer_layer.css("border-color").replace(')',',0)')};
+			    border-top-width:${fuki_chara["sippo_height"]}px;
+			    border-bottom-width:${fuki_chara["sippo_height"]}px;
+			    border-left-width:${fuki_chara["sippo_width"]}px;
+			    border-right-width:${fuki_chara["sippo_width"]}px;
+			    margin-left: ${fuki_chara["sippo_width"]*-1}px;
+			    border-${style_text_key}-color:${msg_outer_layer.css("background-color")};
+			    
+			}
+		
+			.fuki_box:before{
+			
+			    border-color: ${msg_outer_layer.css("border-color").replace(')',',0)')};
+			    border-top-width:${fuki_chara["sippo_height"]+border_size}px;
+			    border-bottom-width:${fuki_chara["sippo_height"]+border_size}px;
+			    border-left-width:${fuki_chara["sippo_width"]+border_size}px;
+			    border-right-width:${fuki_chara["sippo_width"]+border_size}px;
+			    margin-left: ${(fuki_chara["sippo_width"]+border_size)*-1}px;
+			    margin-${style_text_key}: ${border_size}px;
+			    border-${style_text_key}-color:${msg_outer_layer.css("border-color")};
+		    
+			}`;
+			
+		}else{
+			
+			str_css2 = `
+			
+			.fuki_box:after{
+	
+			    border-color: ${msg_outer_layer.css("border-color").replace(')',',0)')};
+			    border-top-width:${fuki_chara["sippo_width"]}px;
+			    border-bottom-width:${fuki_chara["sippo_width"]}px;
+			    border-left-width:${fuki_chara["sippo_height"]-2}px;
+			    border-right-width:${fuki_chara["sippo_height"]-2}px;
+			    margin-top: ${(fuki_chara["sippo_width"]+2)*-1}px;
+			    border-${style_text_key}-color:${msg_outer_layer.css("background-color")};
+			    
+			}
+			
+			.fuki_box:before{
+			
+			    border-color: ${msg_outer_layer.css("border-color").replace(')',',0)')};
+			    border-top-width:${fuki_chara["sippo_width"]+border_size}px;
+			    border-bottom-width:${fuki_chara["sippo_width"]+border_size}px;
+			    border-left-width:${fuki_chara["sippo_height"]+border_size-2}px;
+			    border-right-width:${fuki_chara["sippo_height"]+border_size-2}px;
+			    margin-top: ${(fuki_chara["sippo_width"]+border_size+2)*-1}px;
+			    margin-${style_text_key}: ${border_size}px;
+			    border-${style_text_key}-color:${msg_outer_layer.css("border-color")};
+		    
+			}`;
+		
+		}
+		
+		
+		$("#tmp_style").html(str_css + "\n" + str_css2);
+		
+	},
     
     popAnimStack:function(){
       
@@ -1564,28 +1748,40 @@ tyrano.plugin.kag ={
         
         if(ext=="mp3" || ext=="ogg" || ext=="m4a"){
             
+             // 相対パスの場合"./"を補完
+            if (src.indexOf("http://") !== 0 && src.indexOf("https://") !== 0 && src.indexOf("./") !== 0) {
+                src = "./" + src;
+            }
+            
             var howl_opt = {
                 "src": src,
-                preload:true
+                preload:true,
+                onload: () => {
+                    if(callbk) callbk();
+                },
+                onloaderror: () => {
+                    //that.kag.error("オーディオファイル「"+src+"」が見つかりません。場所はフルパスで指定されていますか？ (例)data/bgm/music.ogg");
+                    if(callbk) callbk(obj);
+                },
             };
+            
             let obj = new Howl(howl_opt);
             
-            obj.on("load",function(){
-                if(callbk) callbk();
-            });
-            
-            obj.on("loaderror",function(){
-                
-                that.kag.error("オーディオファイル「"+src+"」が見つかりません。場所はフルパスで指定されていますか？ (例)data/bgm/music.ogg");
-                if(callbk) callbk();
-                    
-            });
-            
 
-        }else{
+        }else if("mp4" == ext || "ogv" == ext || "webm" == ext){
+	        
+	       //動画ファイルプリロード
+	       $("<video />").attr("src", src).on("loadeddata", (function (e) {
+	           callbk && callbk();
+	       })).on("error", (function (e) {
+	           that.kag.error("動画ファイル「" + src + "」が見つかりません。場所はフルパスで指定されていますか？ (例)data/video/file.mp4");
+	           callbk && callbk();
+	       }));
+	       
+   		}else{
         
             $('<img />').attr('src', src).on("load",function(e){
-                    if(callbk) callbk();
+                    if(callbk) callbk(this);
              }).on("error",function(e){
                  
                     //画像が見つからなかった時のエラー
@@ -1635,12 +1831,11 @@ tyrano.plugin.kag ={
     //値が空白のものは設定しない
     setStyles:function(j_obj,array_style){
         
-        
         for( key in array_style ){
             
-            if(array_style[key]){
-                if(array_style[key]==""){
-                    
+            if(typeof array_style[key] !="undefined"){
+                if(array_style[key]===""){
+                
                 }else{
                     j_obj.css(key,array_style[key]);
                 }

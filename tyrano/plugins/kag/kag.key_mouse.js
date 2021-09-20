@@ -282,11 +282,7 @@ tyrano.plugin.kag.key_mouse = {
         }
         
         layer_obj_click.click(function(e){
-            // POSSIBLE IMPROVE
-            // make "isReturn" variable
-            // and do all if statements
-            // then do "if (isReturn) return;"
-            
+	        
             if(that.kag.tmp.ready_audio==false){
                 
                 if($.isNeedClickAudio()){
@@ -312,7 +308,6 @@ tyrano.plugin.kag.key_mouse = {
             
             if(that.kag.stat.is_hide_message == true){
                 that.kag.layer.showMessageLayers();
-                    
                 return false;
             }
             
@@ -329,6 +324,11 @@ tyrano.plugin.kag.key_mouse = {
             
             if(that.kag.stat.is_stop == true){
                 return false;
+            }
+
+			//フキダシ表示の場合は一回非表示にする。
+			if(that.kag.stat.fuki.active==true){
+				that.kag.layer.hideMessageLayers();
             }
 
             that.kag.ftag.nextOrder();

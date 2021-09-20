@@ -131,7 +131,7 @@ tyrano.plugin.kag.menu = {
             });
             
             $.preloadImgCallback(j_menu,function(){
-                layer_menu.fadeIn(300);
+                layer_menu.stop(true,true).fadeIn(300);
                 $(".button_menu").hide();
             },that);
 
@@ -478,8 +478,9 @@ tyrano.plugin.kag.menu = {
                     tmp_base.css("top",0);
                     tmp_base.css("transform", "");
                     var opt = {
+                        scale:1,
                         height:that.kag.config.scHeight,
-                        width:that.kag.config.scWidth
+                        width:that.kag.config.scWidth,
                     };
                     
                     
@@ -1018,7 +1019,7 @@ tyrano.plugin.kag.menu = {
         layer_menu.append(j_obj);
         layer_menu.show();
         $.preloadImgCallback(layer_menu,function(){
-            j_obj.fadeIn(300);
+            j_obj.stop(true,true).fadeIn(300);
             layer_menu.find(".block_menu").fadeOut(300);
         },that);
         
@@ -1133,7 +1134,7 @@ tyrano.plugin.kag.menu = {
 
             
             $.preloadImgCallback(layer_menu,function(){
-                layer_menu.fadeIn(300);
+                layer_menu.stop(true,true).fadeIn(300);
                 //一番下固定させる
                 layer_menu.find(".log_body").scrollTop(9999999999);
 
