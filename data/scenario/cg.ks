@@ -1,5 +1,5 @@
 ;=========================================
-; CG モード　画面作成
+; CG Mode - Screen Creation
 ;=========================================
 
 @layopt layer=message0 visible=false
@@ -16,7 +16,7 @@
 [iscript]
     
     tf.page = 0;
-    tf.selected_cg_image = ""; //選択されたCGを一時的に保管
+    tf.selected_cg_image = ""; // Temporarily save the selected CG
     
 [endscript]
 
