@@ -2,7 +2,7 @@
 
 To run the example game on your own computer, you need to open a local HTTP server (a webserver) for [`data`](./data), the subdirectory that contains the example game code.
 
-There are a lot of different ways to do this.
+There are a lot of different ways to do this. I've described three common ones below.
 
 
 ## If You're On Windows And Confused:
@@ -16,7 +16,7 @@ There are a lot of different ways to do this.
 (For more detailed instructions, please look at your chosen server's documentation.)
 
 
-## Use Node.js
+## Using Node.js
 
 If you're going to be working with TyranoScript (or Javascript in general), you're probably going to need Node.js and NPM. [If you don't already have them, you can get them here.](https://nodejs.org/)
 
@@ -40,7 +40,7 @@ Hit CTRL-C to stop the server
 In your web browser, go to one of the addresses that it gives you - in this case, <http://127.0.0.1:8080> or <http://192.168.0.203:8080>. The example game should be running.
 
 
-## Use Python
+## Using Python
 
 Python comes with a simple HTTP server for purposes like this. If you use Linux, you probably already have it installed. You can [follow this tutorial](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server) to open the server, but the short version is:
 
