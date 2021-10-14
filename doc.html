@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>タグリファレンス生成</title>
+  <title>Tag Reference Generation</title>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />  
@@ -42,15 +42,15 @@ try{
 
 <body>
 
-<input id="button_gen" type="button" value="タグリファレンス生成" />
+<input id="button_gen" type="button" value="Tag Reference Generation" />
 
 <textarea id="src_html" style="height:300px">
 </textarea>
 
-オートコンプリート用のJS文字列
+JS string for autocomplete
 <textarea id="auto_complete_tag" style="height:300px"></textarea>
 
-スタジオ用jsonファイル
+Studio usage JSON file
 <textarea id="studio_json" style="height:300px"></textarea>
 
  
@@ -58,13 +58,13 @@ try{
 	<div class="row area_main">
 		<div class="col-xs-4" style="background-color:white;border:0">
 			<ul class="area_group list-group sidebar-nav-v1" id="sidebar-nav-1">
-				<!-- ここにグループHTMLが格納される -->
+				<!-- Group HTML goes here -->
 			</ul>
 
 		</div>
 
 		<div class="area_ref col-xs-8">
-			<!-- ここにタグの解説がはいる -->
+			<!-- Tag explanation goes here -->
 		</div>
 
 	</div>
@@ -76,7 +76,7 @@ try{
    
    $(function(){
     
-        //masterタグの作成
+        //create master tag
         $("#button_gen").click(function(){
         	$.generateHtml();
         });

@@ -1,7 +1,7 @@
 
 *start
 
-;背景変更マクロ　storage と time を指定する
+; Background change macro. Specify "storage" and "time"
 [macro name="back"]
 
 ;@layopt layer=message0 visible=false
@@ -14,7 +14,7 @@
 [endmacro]
 
 
-;キャラクターを表示、そして設定
+; Initialize and set characters
 [macro name="charaset"]
 
 [backlay]
@@ -30,9 +30,9 @@
 
 [endmacro]
 
-;;;;;;;;;;;;セーブ関係
+;;;;;;;;;;;;Save-Related
 
-;save情報を取得、ptextを継承する
+; Get save data, inherit ptext
 
 [macro name="saveinfo"]
 
@@ -76,7 +76,7 @@ tf.savetext = "<span style='font-size:10px'>"+tf.save_date+"</span><br />"+tf.ti
 [endmacro]
 
 
-;/////////////拡張 CGモードなどを利用するための設定
+; ///////////// Settings for using extended CG mode, etc.
 
 [iscript]
 	
@@ -94,7 +94,7 @@ tf.savetext = "<span style='font-size:10px'>"+tf.save_date+"</span><br />"+tf.ti
 [endscript]
 
 
-;CGモードのボタンを表示するためのマクロ
+; Macro for displaying CG mode buttons
 [macro name="cg_image_button"]
 	
 	[iscript]
@@ -113,7 +113,7 @@ tf.savetext = "<span style='font-size:10px'>"+tf.save_date+"</span><br />"+tf.ti
 	
 	[endscript]
 	
-	;渡された値を元に、CG状態を確認していく
+	; Check CG status based on passed value
 	[if exp="tf.is_cg_open==true"]
 		[button graphic=&mp.tmp_graphic[0] x=&mp.x y=&mp.y width=&mp.width height=&mp.height preexp="mp.graphic" exp="tf.selected_cg_image = preexp" storage="cg.ks" target="*clickcg" folder="bgimage" ]
 	[else]
@@ -121,7 +121,7 @@ tf.savetext = "<span style='font-size:10px'>"+tf.save_date+"</span><br />"+tf.ti
 	[endif]
 [endmacro]
 
-;CGが閲覧された場合、CGモードで表示できるようにする
+; Can display in CG mode when CG is inspected
 [macro name="cg" ]
 
     [iscript]
@@ -133,8 +133,8 @@ tf.savetext = "<span style='font-size:10px'>"+tf.save_date+"</span><br />"+tf.ti
 [endmacro]
 
 
-;リプレイモード
-;CGモードのボタンを表示するためのマクロ
+; Replay mode
+; Macro for displaying CG mode buttons
 [macro name="replay_image_button"]
 	
 	[iscript]
@@ -146,7 +146,7 @@ tf.savetext = "<span style='font-size:10px'>"+tf.save_date+"</span><br />"+tf.ti
 	
 	[endscript]
 	
-	;渡された値を元に、CG状態を確認していく
+	; Check CG status based on passed value
 	[if exp="tf.is_replay_open==true"]
 		[button graphic=&mp.graphic x=&mp.x y=&mp.y width=&mp.width height=&mp.height preexp="sf.replay_view[mp.name]" exp="tf.selected_replay_obj = preexp" storage="replay.ks" target="*clickcg" folder="bgimage" ]
 	[else]
@@ -155,7 +155,7 @@ tf.savetext = "<span style='font-size:10px'>"+tf.save_date+"</span><br />"+tf.ti
 	
 [endmacro]
 
-;リプレイを開放する
+; Open replay
 [macro name="setreplay" ]
 
     [iscript]
@@ -171,7 +171,7 @@ tf.savetext = "<span style='font-size:10px'>"+tf.save_date+"</span><br />"+tf.ti
     [if exp="tf.flag_replay == true"]
         
         @layopt page="fore" layer="message0" visible=false
-        ;システムボタンを非表示にするなど
+        ; Hide system buttons, etc.
         [hidemenubutton]
         
         @jump storage="replay.ks" 
