@@ -1,32 +1,32 @@
-// Config.tjs - ティラノスクリプト 設定
+// Config.tjs - TyranoScript Settings
 // Copyright (C) 2012-2017 ShikemokuMK  
 
-;global.config_version = "5.00"; // この行を消さないでください
+;global.config_version = "5.00"; // DO NOT DELETE THIS LINE
 
-// ティラノスクリプトの基本設定になります。
-// 吉里吉里で動かす場合は同一フォルダ内のKirikiri_Config.tjs を使用して下さい
+// Base TyranoScript settings.
+// Please use "Kirikiri_Config.tjs" in the same folder when running with KiriKiri
 
-// このファイル内で設定できる項目は、すべて
-// ;設定名 = 値;
-// の形式になっています。
-// 「追加の設定」を除いて、設定は各項目につき１行で記述する必要があります。
-
-
-//------------------------------------------------------- 全体の設定 -----
+// All settings in this file are formatted like this:
+// ;setting_name = value;
+// 
+// With the exception of "Additional Settings", settings should be one-per-line.
 
 
-// ◆ タイトル
-// ウィンドウのキャプション(タイトル)および
-// ブラウザの場合は、タイトルに指定されます
-;System.title = "ティラノスクリプト";
+//------------------------------------------------------- GLOBAL SETTINGS -----
 
 
-// ◆ プロジェクト一意の識別名称　ティラノスクリプト独自設定
-// プロジェクト固有の文字列を指定してください。特に同一ドメイン上にプロジェクトを配置する場合は必ず指定してください
+// ◆ Title
+// Used in window titlebars and 
+// browser page titles.
+;System.title = "TyranoScript";
+
+
+// ◆ Unique Project Identifier (TyranoScript-Specific)
+// Specify a project-specific string. This is especially important when placing multiple projects on the same domain.
 ;projectID = tyranoproject;
 
-// ◆ リリースバージョンを数値で指定します。全角・英数字は使用できません。
-// パッチ機能において重要な役割を果たします。パッチファイルで指定されたバージョンがこの数値より大きい場合はパッチが適応されます。
+// ◆ Numerical version release number. Double-byte and alphanumeric characters cannot be used.
+// Plays an important role in the patch function. Patches will be applied if the version number specified in a patch file is greater than this number.
 // ゲームをアップデートした場合、必ず以下の数値を上げておくことをオススメします。
 ;game_version = 0.0;
 
