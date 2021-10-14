@@ -1,46 +1,46 @@
-TyranoScript ｜ TyranoScript Ver5.00 (C) ShikemokuMK
+TyranoScript ｜ TyranoScript Ver5.00 (c) ShikemokuMK
 http://tyrano.jp
 
 
-■ Main features ■
+■ Main Features ■
 
-① Works with HTML and JavaScript
+1. Works With HTML And JavaScript
 
-It can be operated on devices such as iPhone, iPad, and Android.
-Also, by using tools such as PhoneGap, you can make it into an application.
-It can be sold on the App Store and Android Market.
+TyranoScript games can be run on devices such as iPhone, iPad, and Android.
+Also, by using tools such as PhoneGap, you can make your game into an app.
+Your game can then be sold on the App Store and Android Market.
 
-Of course, you can run it as a browser game.
-It can also be distributed as a Windows application or Mac application by using an expansion pack.
+Of course, you can run your project as a browser game.
+Projects can also be distributed as Windows or Mac applications by using an expansion pack.
 
-② High affinity with KAG3 / Kirikiri
+2. High Affinity With KAG3 / Kirikiri
 
-TyranoScript has a high affinity with KAG3 / KiriKiri.
+TyranoScript has a high affinity with KAG3 / Kirikiri.
 If you've used tag-based scripting tools, you're ready to go.
 
-③ Smooth cooperation with JavaScript
+3. Smooth Integration With JavaScript
 
 TyranoScript allows you to freely write and extend JavaScript.
 
-④ Free. Commercially available
+4. Free, Available For Commercial Use
 
 Please use it for free. Commercial use is also possible.
-In addition, the source code is also open to the public, and you can freely modify it.
+In addition, the source code is also open to the public, and you may freely modify it.
 
-■ How to use ■
+■ How To Use ■
 
-Please refer to the tutorial and tag reference on the official page.
+Please refer to the tutorial and tag reference on the official website.
 
-[Tag reference]
+[Tag Reference]
 http://tyrano.jp/home/tag
 
-[How to use & tutorial]
+[How To Use & Tutorial]
 http://tyrano.jp/usage/tutorial
 
 
 ■ TyranoBuilder ■
 http://b.tyrano.jp
-The official development tool for TyranoScript. Game production will be easier.
+The official development tool for TyranoScript. Makes game production easier.
 
 ■ TyranoRider ■
 http://tyrano.jp/adv/next/rider
@@ -49,20 +49,20 @@ Official debugging tool. There are functions that support the development of var
 ■ Terms of use ■
 TyranoScript is available free of charge.
 There are no restrictions on commercial use.
-If the purpose is to produce a work, there are no restrictions on modification
+If the purpose is to produce a work, there are no restrictions on modification.
 
 ■ Prohibitions ■
-* Please refrain from redistributing the TyranoScript itself.
-* Act of treating TyranoScript as a product of smartphone conversion tool.
+* Please refrain from redistributing TyranoScript itself.
+* Please refrain from redistributing TyranoScript as a smartphone app conversion tool.
 
 If applicable, please contact the developer in advance.
 
 ■ Disclaimer ■
 
-Damage, disadvantage, accident, etc. caused by using this tool.
-Even if it occurs, we do not take any responsibility.
+The developer takes no responsibility for damage, harm, or losses resulting from the use of this tool.
 
-■ Contact information ■
+
+■ Contact Information ■
 
 Email
 shikemokumk@gmail.com
@@ -74,41 +74,41 @@ http://twitter.com/shikemokumk
 
 ■ Acknowledgments ■
 
-Also, when creating the program, refer to the following program source code.
-Did.
+The below program's source code was referred to when creating this program.
 
-* KiriKiri 2 SDK (KAG / TJS sources and documents, etc.)
+
+* Kirikiri 2 SDK (KAG / TJS sources and documents, etc.)
 Copyright (C) 1997-2008 W.Dee
 http://kikyou.info/
 
 
-■ Main update history ■
+■ Main Update History ■
 
 -------------------------------------------------- -------------------
 Ver4.5
 Layer mode implementation, key config support
-Default UI renewal etc.
+Default UI renewal, etc
 
 Ver4.0
-TyranoRider compatible
+TyranoRider compatibility
 CG, config, replay added
-Volume adjustment added, etc.
+Volume adjustment added, etc
 
 Ver3.20
-You can now save even if you have a choice or clickable.
+Saving is now possible even while a choice or clickable is active.
 
 Ver3.14
-Skip stabilization measures, etc.
+Skip stabilization measures, etc
 
 Ver3.0
-Compatible with TyranoRider
+TyranoRider compatibility
 
 Ver2.80
-Compatible with iOS7
+iOS7 compatibility
 http can be specified for storage
 
 Ver2.60
-Open source the license. Change to MIT license
+Open-sourced license. Changed to MIT license
 
 Ver2.50
 Menu screen customization support
@@ -122,20 +122,20 @@ Other corrections
 Ver2.30
 Support for customizing the save screen
 Add Fix layer
-Addition of [savesnap] [clearfix] tags, etc.
+Addition of [savesnap] [clearfix] tags, etc
 
 Ver2.20
-Added glyph tag. Other bug fixes, etc.
+Added glyph tag. Other bug fixes, etc
 
 Ver2.10
 Now available as a Windows application
 
 Ver2.01
-Music playback corrections such as FireFox
+Music playback corrections for FireFox, etc
 Add TG variable
 
 Ver2.00
-Enhanced app conversion. Such
+Enhanced app conversion. Etc
 
 Ver1.01
 Fixed a bug that the first instruction is skipped if the label is not specified at the time of [call]

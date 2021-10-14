@@ -4,13 +4,13 @@ Copyright (c) 2018 STRIKEWORKS @Shikemokumk
 http://strikeworks.jp
 
 ■ Terms of use ■
-TyranoScript is available free of charge.
+Tyrannoscript is available free of charge.
 There are no restrictions on commercial use.
 If the purpose is to produce a work, there are no restrictions on modification
 
 ■ Prohibitions ■
-・ Please refrain from redistributing the TyranoScript itself.
-・ Act of treating TyranoScript as a product of smartphone conversion tool
+・ Please refrain from redistributing the Tyrannoscript itself.
+・ Act of treating Tyrannoscript as a product of smartphone conversion tool
 
 If applicable, please contact the developer in advance.
 

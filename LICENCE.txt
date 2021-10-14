@@ -1,26 +1,26 @@
-TyranoScript ｜ティラノスクリプト
+TyranoScript | ティラノスクリプト
 
 Copyright (c) 2018 STRIKEWORKS @Shikemokumk
 http://strikeworks.jp
 
-■利用規約■
-ティラノスクリプトは無料でご利用いただけます。
-商用利用にも制限はありません。
-作品の製作が目的であれば、改造に制限はありません
+■ Terms of use ■
+TyranoScript is available free of charge.
+There are no restrictions on commercial use.
+If the purpose is to produce a work, there are no restrictions on modification.
 
-■禁止事項■
-・ティラノスクリプト自体の再配布はお控えください。
-・ティラノスクリプトをスマホ変換ツールの商材として扱う行為
+■ Prohibitions ■
+* Please refrain from redistributing TyranoScript itself.
+* Please refrain from redistributing TyranoScript as a smartphone app conversion tool.
 
-該当する場合は、事前に開発者までご相談ください。
-
-
-【免責事項】
-本ツールを利用したことによって損害・不利益・事故等が
-発生した場合でも、一切の責任を負いません。
+If applicable, please contact the developer in advance.
 
 
-クレジット ----------------
+[Disclaimer]
+The developer takes no responsibility for damage, harm, or losses resulting from the use of this tool.
+
+
+
+CREDITS ----------------
 
 TyranoScript 
 Copyright (c) 2012-2019 STRIKEWORKS / Shikemokumk
