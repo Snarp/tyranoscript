@@ -1,6 +1,6 @@
 /*
 Valid in Ver4.50 or later
-This file is used to set the device input / output of Tyrannoscript.
+This file is used to configure device input / output for TyranoScript.
 
 
 <Settable Actions> 
