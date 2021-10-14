@@ -9,9 +9,9 @@ There are a lot of different ways to do this. I've described three common ones b
 
 1. Download a portable HTTP server program like [Mongoose](https://mongoose.ws/desktop-app/) or [TinyWeb](https://www.ritlabs.com/en/products/tinyweb/).
 
-2. Put its `.exe` file inside the `data` folder, and double-click on it.
+2. Copy-paste its `.exe` file inside the `data` folder, and double-click on it.
 
-3. The server should give you an address. Type it into your web browser to play the game.
+3. The server should give you an address. Type that address into your web browser to play the example game.
 
 (For more detailed instructions, please look at your chosen server's documentation.)
 
@@ -42,7 +42,7 @@ In your web browser, go to one of the addresses that it gives you - in this case
 
 ## Using Python
 
-Python comes with a simple HTTP server for purposes like this. If you use Linux, you probably already have it installed. You can [follow this tutorial](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server) to open the server, but the short version is:
+Python comes with a simple HTTP server. If you use Linux, you probably already have Python installed. [This tutorial explains in detail how to launch the server](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server), but the short version is:
 
 ```bash
 cd data                    # move into the `data` directory, if necessary
