@@ -1,4 +1,4 @@
-TyranoScript ｜ Tyranoscript Ver5.00 (C) ShikemokuMK
+TyranoScript ｜ TyranoScript Ver5.00 (C) ShikemokuMK
 http://tyrano.jp
 
 
@@ -15,12 +15,12 @@ It can also be distributed as a Windows application or Mac application by using 
 
 ② High affinity with KAG3 / Kirikiri
 
-Tyranoscript has a high affinity with KAG3 / KiriKiri.
+TyranoScript has a high affinity with KAG3 / KiriKiri.
 If you've used tag-based scripting tools, you're ready to go.
 
 ③ Smooth cooperation with JavaScript
 
-Tyranoscript allows you to freely write and extend JavaScript.
+TyranoScript allows you to freely write and extend JavaScript.
 
 ④ Free. Commercially available
 
@@ -40,20 +40,20 @@ http://tyrano.jp/usage/tutorial
 
 ■ TyranoBuilder ■
 http://b.tyrano.jp
-The official development tool for Tyranoscript. Game production will be easier.
+The official development tool for TyranoScript. Game production will be easier.
 
 ■ TyranoRider ■
 http://tyrano.jp/adv/next/rider
 Official debugging tool. There are functions that support the development of variable watches and the like.
 
 ■ Terms of use ■
-Tyranoscript is available free of charge.
+TyranoScript is available free of charge.
 There are no restrictions on commercial use.
 If the purpose is to produce a work, there are no restrictions on modification
 
 ■ Prohibitions ■
-* Please refrain from redistributing the Tyranoscript itself.
-* Act of treating Tyranoscript as a product of smartphone conversion tool.
+* Please refrain from redistributing the TyranoScript itself.
+* Act of treating TyranoScript as a product of smartphone conversion tool.
 
 If applicable, please contact the developer in advance.
 
@@ -112,7 +112,7 @@ Open source the license. Change to MIT license
 
 Ver2.50
 Menu screen customization support
-Tyranoscript Booster Pack
+TyranoScript Booster Pack
 
 Ver2.40
 Add keyframe animation
