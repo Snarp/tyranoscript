@@ -1,62 +1,62 @@
 /*
-Ver4.50以降で有効
-ティラノスクリプトの装置入出力に関する設定を行うファイルです。
+Valid in Ver4.50 or later
+This file is used to set the device input / output of Tyrannoscript.
 
 
-<設定できるアクション> 
-    save:セーブ画面を開きます
-    load:ロード画面を開きます
-    next:次の文章に移ります。左クリックの操作
-    menu:メニュー画面を表示します。
-    title:タイトルへ戻ります
-    skip:スキップを開始します
-    backlog:バックログを表示します
-    fullscreen:フルスクリーン切り替え
-    qsave:クイックセーブ実行
-    qload:クイックロード実行
-    auto:オートモード開始
-    hidemessage:メッセージ消去
-    関数を指定することもできます。
-    例えば、コンフィグ画面の表示などは、関数の中にsleepgameでコンフィグ画面のシナリオファイルを指定してください
+<Settable Actions> 
+    save:Open save screen
+    load:Open loading screen
+    next:Move on to next sentence. Left-click operation
+    menu:Display menu screen
+    title:Return to title
+    skip:Start skipping
+    backlog:Show backlog
+    fullscreen:Toggle full-screen view
+    qsave:Execute quick-save
+    qload:Execute quick-load
+    auto:Turn on auto mode
+    hidemessage:Hide message box
+    You can also specify a function.
+    For example, to display the config screen, specify the scenario file of the config screen with "sleepgame" in the function:
     function(){
-            //config呼び出し
+            // call config
             TYRANO.kag.ftag.startTag("sleepgame", {storage:"config.ks"});
     }
     
-<キーボード指定方法> 
+<Keyboard Specification Method> 
     
-    キーコードと、そのキーが押されたときのアクションを配置します。
-    キーコードの調べ方は
+    Place the key code and the action when that key is pressed.
+    To find a key code:
     http://shanabrian.com/web/javascript/keycode.php
-    上記サイトで実際にキーを押すことで対応する数字を取得できます。
+    Pressing the key on the above site will give you the corresponding number.
     
-    ノベルゲームでよく利用すると思わえるキーコードを書いておきます。
+    Below are some key codes that are commonly used in visual novels.
     32:space 13:Enter 17:Ctrl 
     
-<マウス操作>
+<Mouse Operations>
     
-    right:右クリック
-    center:センターボタンをクリック
-    wheel_up:マウスホイールを上に上げたときの動作
-    wheel_down:マウスホイールを下に下げたときの動作
+    right:right-click
+    center:center-click
+    wheel_up:mouse wheel up
+    wheel_down:mouse wheel down
     
 
-<ジェスチャー>
+<Gestures>
 
-    スマホやタブレット限定です。フリック操作などに対応して、システムを呼び出すことができます。
-    swipe_up_1 は例えば、画面の上方向にフリックした時の動作を指定できます。
-    この _1 の数字は指の数をしていできます。
+    Limited to smartphones and tablets. You can call the system in response to flick operations.
+    For example, "swipe_up_1" can be used to specify what happens when you flick up the screen.
+    This "1" number can be used to indicated the number of fingers used.
     
-    なので、１本でのスワイプと２本でのスワイプの動作を分けたい場合にはそれぞれ
-    swipe_up_1 とswipe_up_2 を分けて定義すれば良いということです。
+    So, if you want to differentiate between a swipe operation with one finger and a swipe operation with two fingers, 
+    you can define "swipe_up_1" and "swipe_up_2" separately.
     
-    holdは 画面を一定時間タッチし続けたときに発動します。 
+    "hold" is activated when you hold down on a point on the screen for a certain period of time.
     
 */
 
 var __tyrano_key_config = {
 
-    //キーボード操作 
+    // Keyboard Operations
     "key" : {
     
         "32" : "hidemessage", //Space
@@ -64,7 +64,7 @@ var __tyrano_key_config = {
         "91" : "skip", //Command(Mac)  
         "17" : "skip", //Ctrl (Windows)
         "67":function(){ // c ボタン
-            //config呼び出し例 コメント化
+            // "config" call example commented out
             /*
             if (TYRANO.kag.tmp.sleep_game != null) {
                 return false;
@@ -75,15 +75,15 @@ var __tyrano_key_config = {
         
     },
 
-    //マウス操作
+    // Mouse Operations
     "mouse" : {
-        "right" : "hidemessage", //右クリックの動作
-        "center": "menu", //センターボタンをクリック
-        "wheel_up" : "backlog", // ホイールをアップした時の動作
-        "wheel_down" : "next" //ホイールをダウンした時の動作
+        "right" : "hidemessage", // Right-click behavior
+        "center": "menu", // Center-click behavior
+        "wheel_up" : "backlog", // Wheel-up behavior
+        "wheel_down" : "next" // Wheel-down behavior
     },
     
-    //ジェスチャー
+    // Gestures
     "gesture" : {
         "swipe_up_1" : {
             "action" : "backlog"
