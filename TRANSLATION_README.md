@@ -4,6 +4,8 @@ Mostly translated by [snarp](https://snarp.github.io/) (a human), but there may 
 
 # TODO
 
+* STOPPING POINT: `data/system/Config.tjs` line 83
+
 * Transfer translations from `data` to elsewhere as necessary. Possible examples:
 
     - `data/system/KeyConfig.js`

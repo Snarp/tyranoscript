@@ -1,11 +1,11 @@
 # How do I run the example game?
 
-To run the example game on your own computer, you need to open a local HTTP server (a webserver) for [`data`](./data), the subdirectory that contains the example game code.
+To run TyranoScript games on your own computer, you need to open a local HTTP server (a webserver) for [`data`](./data), the subdirectory that contains the example game code.
 
-There are a lot of different ways to do this. I've described three common ones below.
+There are a lot of different ways to do this. Three common ones are described below.
 
 
-## If You're On Windows And Confused:
+## If You're On Windows And Confused
 
 1. Download a portable HTTP server program like [Mongoose](https://mongoose.ws/desktop-app/) or [TinyWeb](https://www.ritlabs.com/en/products/tinyweb/).
 

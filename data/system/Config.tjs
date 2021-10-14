@@ -15,72 +15,72 @@
 //------------------------------------------------------- GLOBAL SETTINGS -----
 
 
-// ◆ Title
+// * Title
 // Used in window titlebars and 
 // browser page titles.
 ;System.title = "TyranoScript";
 
 
-// ◆ Unique Project Identifier (TyranoScript-Specific)
+// * Unique Project Identifier (TyranoScript-Specific)
 // Specify a project-specific string. This is especially important when placing multiple projects on the same domain.
 ;projectID = tyranoproject;
 
-// ◆ Numerical version release number. Double-byte and alphanumeric characters cannot be used.
+// * Numeric version release number. Double-byte and alphanumeric characters cannot be used.
 // Plays an important role in the patch function. Patches will be applied if the version number specified in a patch file is greater than this number.
-// ゲームをアップデートした場合、必ず以下の数値を上げておくことをオススメします。
+// When updating a game, you should always increment the number below.
 ;game_version = 0.0;
 
-// 画面比率を固定にするか否か
-// "fit"を指定すると、プレイヤーが閲覧している端末に合わせて自動的に調整されますが、縦横比率は保たれません。
-// "fix"を指定すると縦横比率は保たれます。ただし、端末によっては何も表示されない空白領域ができてしまいます。
-// "default"を指定すると縦横比の調整は一切行われません
+// Whether To Use A Fixed Aspect Ratio
+// "fit" - The game display will be automatically adjusted according to the device the player is browsing, but the aspect ratio will not be maintained.
+// "fix" - The aspect ratio will be maintained. However, some devices may display blank areas around the edges.
+// "default" - The aspect ratio will not be adjusted at all.
 ;ScreenRatio = fix;
 
-//パッチファイルが配置されている場合、起動時に自動的に反映するか否か。
-//trueを指定すると実行ファイルと同一フォルダにtpatchファイルが存在する場合反映してから起動します。
-//（MacOS Sierra 以降の場合は home/ユーザー名/_TyranoGameData/　以下）
-//falseを指定した場合 起動後に[apply_local_patch]タグを使って反映することもできます。
+// Whether To Automatically Patch On Startup
+// "true" = If a "tpatch" file exists in the same folder as the executable file, it will be applied before starting.
+// (For MacOS Sierra or later, "home/USERNAME/_TyranoGameData/")
+// "false" = the patch can be applied after startup using the "[apply_local_patch]" tag
 ;patch_apply_auto = true;
 
-// 画面をセンタリングするか否か
-// アプリ化などでゲーム画面が画面外に出てしまうような場合にfalseを指定すると改善する場合があります。
+// Whether To Center The Screen
+// It may be better to specify "false" if the game display protrudes off the screen for any reason.
 ;ScreenCentering = true;
 
-// カメラ機能を使えるようにするかを設定
-// trueで有効　false で無効です。
+// Whether To Enable The Camera Function
+// "true" to enable, "false" otherwise.
 ;useCamera = true;
 
 
-//-------------------------------------------- ウィンドウや動作の設定 -----
+//-------------------------------------------- Window And Behavior Config -----
 
-// ◆ 画面サイズ
-// scWidth に画面の幅、scHeight に画面の高さをピクセル単位で指定します。
+// * Screen Size
+// Specify the screen width in "scWidth" and the screen height in pixels in "scHeight".
 
 ;scWidth = 1280;
 ;scHeight = 720;
 
-// ◆ チャットノベル形式
-//　V5より。trueにするとチャットストーリー形式でゲームがプレイできます。
+// * Chat Novel Format
+// Version 5+. If set to true, the game can be played in chat story format.
 ;vchat = false;
 
-// ◆ チャットノベル形式のメニュー
-// チャットノベルで便利なセーブやロードなどを備えたメニューを表示するか否か。
+// * Chat Novel Style Menu
+// Whether to display a menu with convenient save and load in chat novel.
 ;vchatMenuVisible = false;
 
-// ◆ 文字表示スピード 
-// delay で指定した場合はその値が優先されます。resetdelayで元に戻ります 
+// * Text Character Display Speed
+// If "delay" is set, that value has priority. Use "resetdelay" to restore.
 ;chSpeed = 30; 
 
-// ◆ 文字表示スピード (ミリ秒/文字)（未実装）
-;chSpeeds.fast = 10; // 「高速」文字表示スピード
-;chSpeeds.normal = 30; // 「普通」文字表示スピード
-;chSpeeds.slow = 50; // 「遅い」文字表示スピード
+// * Text Character Display Speed (Milliseconds / Character) (Not Implemented)
+;chSpeeds.fast = 10; // "Fast" character display speed
+;chSpeeds.normal = 30; // "Normal" character display speed
+;chSpeeds.slow = 50; // "Slow" character display speed
 
-// ◆ スキップスピード (ミリ秒/文字)
-//スキップ時にどれくらいの早さで進むかを設定できる
+// * Text Character Skip Speed (Milliseconds / Character)
+// You can set how fast you want to go when skipping
 ;skipSpeed = 30;
 
-// ◆ スキップの時、演出もスキップするかを設定できる
+// * スキップの時、演出もスキップするかを設定できる
 //trueで有効。背景変更・キャラクター表示・非表示の速度をが短くなります。
 ;skipEffectIgnore = true;
 
