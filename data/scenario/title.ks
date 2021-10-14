@@ -16,7 +16,7 @@
 [s]
 
 *gamestart
-;Jump to the very first scenario file
+; Jump to the very first scenario file
 @jump storage="scene1.ks"
 
 
