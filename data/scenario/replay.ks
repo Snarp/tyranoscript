@@ -1,5 +1,5 @@
 ;=========================================
-; 回想モード　画面作成
+; Recollection Mode - Screen Creation
 ;=========================================
 *start
 @layopt layer=message0 visible=false
@@ -16,7 +16,7 @@
 [iscript]
     
     tf.page = 0;
-    tf.selected_replay_obj = ""; //選択されたリプレイを一時的に保管
+    tf.selected_replay_obj = ""; // Temporarily save selected replay
     
 [endscript]
 
