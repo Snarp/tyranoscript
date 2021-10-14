@@ -1,10 +1,10 @@
-;このファイルは削除しないでください！
+; DON'T DELETE THIS FILE!
 ;
-;make.ks はデータをロードした時に呼ばれる特別なKSファイルです。
-;Fixレイヤーの初期化など、ロード時点で再構築したい処理をこちらに記述してください。
+; "make.ks" is a special KS file that is called when data is loaded.
+; Describe here the process you want to rebuild at the time of loading, such as initializing the Fix layer.
 ;
 ;
 
-;make.ks はロード時にcallとして呼ばれるため、return必須です。
+; Because "make.ks" is called on load, a "return" is required.
 [return]
 
