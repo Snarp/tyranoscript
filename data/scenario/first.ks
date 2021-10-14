@@ -1,23 +1,23 @@
-;一番最初に呼び出されるファイル
+; The first file to be called
 
-[title name="ティラノスクリプト解説"]
+[title name="TyranoScript Explanation"]
 
 [stop_keyconfig]
 
 
-;ティラノスクリプトが標準で用意している便利なライブラリ群
-;コンフィグ、CG、回想モードを使う場合は必須
+; Convenient standard TyranoScript libraries
+; Required when using config, CG, and Recollection Mode
 @call storage="tyrano.ks"
 
-;ゲームで必ず必要な初期化処理はこのファイルに記述するのがオススメ
+; You should put any absolutely-necessary initialization processes in this file.
 
-;メッセージボックスは非表示
+; Hides message box
 @layopt layer="message" visible=false
 
-;最初は右下のメニューボタンを非表示にする
+; Hide the menu button at the bottom right at first
 [hidemenubutton]
 
-;タイトル画面へ移動
+; Go to title screen
 @jump storage="title.ks"
 
 [s]
