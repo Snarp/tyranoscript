@@ -1,96 +1,96 @@
 ;=========================================
-; コンフィグ モード　画面作成
+; Config Mode - Screen Creation
 ;=========================================
 
-;	メッセージレイヤ0を不可視に
+;	Make message layer 0 invisible 
 	[layopt layer="message0" visible="false"]
 
-;	fixボタンをクリア
+;	Fix button off
 	[clearfix]
 
-;	キーコンフィグの無効化
+;	Disable key config
 	[stop_keyconfig]
 
-;	レイヤーモードの解放
+;	Free layer mode
 	[free_layermode time="100" wait="true"]
 
-;	カメラのリセット
+;	Reset camera
 	[reset_camera time="100" wait="true"]
 	
-;	前景レイヤの中身をすべて空に
+;	Clear contents of foreground layer
 	[iscript]
 	$(".layer_camera").empty();
 	[endscript]
 
-;	メニューボタン非表示
+;	Hide menu button
 	[hidemenubutton]
 
 	[iscript]
 
-	TG.config.autoRecordLabel = "true"; // ラベル通過記録を有効に
+	TG.config.autoRecordLabel = "true"; // Enable recording of passing labels
 
-	tf.current_bgm_vol = parseInt(TG.config.defaultBgmVolume); // BGM音量
-	tf.current_se_vol = parseInt(TG.config.defaultSeVolume); // SE音量
+	tf.current_bgm_vol = parseInt(TG.config.defaultBgmVolume); // BGM volume
+	tf.current_se_vol = parseInt(TG.config.defaultSeVolume); // SE volume
 	
-	tf.current_ch_speed = parseInt(TG.config.chSpeed); // テキスト表示速度
-	tf.current_auto_speed = parseInt(TG.config.autoSpeed); // オート時のテキスト表示速度
+	tf.current_ch_speed = parseInt(TG.config.chSpeed); // Text display speed
+	tf.current_auto_speed = parseInt(TG.config.autoSpeed); // Text display speed on auto
 	
-	tf.text_skip ="ON"; // 未読スキップ
+	tf.text_skip ="ON"; // Skip unread
 	if(TG.config.unReadTextSkip != "true"){
 		tf.text_skip ="OFF";
 	}
 
 	tf.user_setting = TG.config.alreadyReadTextColor;
 	if(tf.user_setting != 'default'){
-		TG.config.alreadyReadTextColor = 'default'; // 一時的に既読テキストの文字色を変更しないようにしています
+		TG.config.alreadyReadTextColor = 'default'; // Try to avoid color changes in already-read text
 	}
 
 	[endscript]
 
 	[iscript]
 
-	/* 画像類のパス */
+	/* Image path */
 	tf.img_path = '../image/config/';
 
-	/* 画像類のパス（ボタン） */
+	/* Image path (button) */
 	tf.btn_path_off = tf.img_path + 'c_btn.gif';
 	tf.btn_path_on  = tf.img_path + 'c_set.png';
 
-	// ボタン画像の幅と高さ
-	tf.btn_w  = 46; // 幅
-	tf.btn_h = 46; // 高さ
+	// Width and height of button image
+	tf.btn_w  = 46; // width
+	tf.btn_h = 46; // height
 
-	// ボタンを表示する座標（tf.config_y_ch[0]とtf.config_y_auto[0]は未使用）
-	tf.config_x       = [1040, 400,　454, 508, 562, 616, 670, 724, 778, 832, 886]; // X座標（共通）
+	// Button display coordinates ("tf.config_y_ch[0]" and "tf.config_y_auto[0]" not used)
+	tf.config_x       = [1040, 400,　454, 508, 562, 616, 670, 724, 778, 832, 886]; // X coordinates (common)
 
-	tf.config_y_bgm   = 190; // BGMのY座標
-	tf.config_y_se    = 250; // SEのY座標
-	tf.config_y_ch    = 325; // テキスト速度のY座標
-	tf.config_y_auto  = 385; // オート速度のY座標
+	tf.config_y_bgm   = 190; // BGM Y coord
+	tf.config_y_se    = 250; // SE Y coord
+	tf.config_y_ch    = 325; // Text velocity Y coord
+	tf.config_y_auto  = 385; // Auto-speed Y coord
 
-	// 上記の配列変数の添字を格納しておく変数。選択した音量や速度に対応。
+	// Variables storing subscripts of the above array variables. Corresponds to the selected volume and speed.
 	tf.config_num_bgm;  // BGM
 	tf.config_num_se;   // SE
-	tf.config_num_ch;   // テキスト速度
-	tf.config_num_auto; // オート速度
+	tf.config_num_ch;   // Text speed
+	tf.config_num_auto; // Text auto speed
 
-	// テキスト速度のサンプルテキストとして表示する文字列（お好みに合わせて変更してください）
-	tf.text_sample = 'テストメッセージです。このスピードでテキストが表示されます。';
+	// Character string to be displayed as sample text of text speed (change to your liking)
+	tf.text_sample = 'Here is some text. This is how fast the text will move.';
 
-	// サンプルテキストを表示しておく時間（テキストを表示し終わってから700ミリ秒で消去させています）
+	// Time to keep sample text visible (it is erased 700 milliseconds after the final character is shown)
 	tf.text_sample_speed;
 
-	// 既読スキップの画像ファイル名を格納しておく変数
+	// Variable storing the read skip image filename
 	tf.img_unread_skip;
 
 	[endscript]
 
 [cm]
 
-;	コンフィグ用の背景を読み込んでトランジション
+;	Load background for config and transition
 	[bg storage="&tf.img_path +'bg_config.png'" time="100"]
 
-;	画面右上の「Back」ボタン
+;	"Back" button at top-right of the screen
 	[button fix="true" graphic="&tf.img_path + 'c_btn_back.png'" enterimg="&tf.img_path + 'c_btn_back2.png'" target="*backtitle" x="1160" y="20"]
 
 [jump target="*config_page"]
@@ -98,7 +98,7 @@
 
 *config_page
 ;------------------------------------------------------------------------------------------------------
-; BGM音量
+; BGM Volume
 ;------------------------------------------------------------------------------------------------------
 	[button name="bgmvol,bgmvol_10"  fix="true" target="*vol_bgm_change" graphic="&tf.btn_path_off" width="&tf.btn_w" height="&tf.btn_h" x="&tf.config_x[1]"  y="&tf.config_y_bgm" exp="tf.current_bgm_vol =  10; tf.config_num_bgm =  1"]
 	[button name="bgmvol,bgmvol_20"  fix="true" target="*vol_bgm_change" graphic="&tf.btn_path_off" width="&tf.btn_w" height="&tf.btn_h" x="&tf.config_x[2]"  y="&tf.config_y_bgm" exp="tf.current_bgm_vol =  20; tf.config_num_bgm =  2"]
@@ -111,11 +111,11 @@
 	[button name="bgmvol,bgmvol_90"  fix="true" target="*vol_bgm_change" graphic="&tf.btn_path_off" width="&tf.btn_w" height="&tf.btn_h" x="&tf.config_x[9]"  y="&tf.config_y_bgm" exp="tf.current_bgm_vol =  90; tf.config_num_bgm =  9"]
 	[button name="bgmvol,bgmvol_100" fix="true" target="*vol_bgm_change" graphic="&tf.btn_path_off" width="&tf.btn_w" height="&tf.btn_h" x="&tf.config_x[10]" y="&tf.config_y_bgm" exp="tf.current_bgm_vol = 100; tf.config_num_bgm = 10"]
 
-;	BGMミュート
+;	BGM Mute
 	[button name="bgmvol,bgmvol_0"   fix="true" target="*vol_bgm_change" graphic="&tf.btn_path_off" width="&tf.btn_w" height="&tf.btn_h" x="&tf.config_x[0]" y="&tf.config_y_bgm" exp="tf.current_bgm_vol = 0; tf.config_num_bgm = 0"]
 
 ;------------------------------------------------------------------------------------------------------
-; SE音量
+; SE Volume
 ;------------------------------------------------------------------------------------------------------
 	[button name="sevol,sevol_10"  fix="true" target="*vol_se_change" graphic="&tf.btn_path_off" width="&tf.btn_w" height="&tf.btn_h" x="&tf.config_x[1]"  y="&tf.config_y_se" exp="tf.current_se_vol =  10; tf.config_num_se =  1"]
 	[button name="sevol,sevol_20"  fix="true" target="*vol_se_change" graphic="&tf.btn_path_off" width="&tf.btn_w" height="&tf.btn_h" x="&tf.config_x[2]"  y="&tf.config_y_se" exp="tf.current_se_vol =  20; tf.config_num_se =  2"]
@@ -128,11 +128,11 @@
 	[button name="sevol,sevol_90"  fix="true" target="*vol_se_change" graphic="&tf.btn_path_off" width="&tf.btn_w" height="&tf.btn_h" x="&tf.config_x[9]"  y="&tf.config_y_se" exp="tf.current_se_vol =  90; tf.config_num_se =  9"]
 	[button name="sevol,sevol_100" fix="true" target="*vol_se_change" graphic="&tf.btn_path_off" width="&tf.btn_w" height="&tf.btn_h" x="&tf.config_x[10]" y="&tf.config_y_se" exp="tf.current_se_vol = 100; tf.config_num_se = 10"]
 
-;	SEミュート
+;	SE Mute
 	[button name="sevol,sevol_0"   fix="true" target="*vol_se_change" graphic="&tf.btn_path_off" width="&tf.btn_w" height="&tf.btn_h" x="&tf.config_x[0]" y="&tf.config_y_se" exp="tf.current_se_vol = 0; tf.config_num_se = 0"]
 
 ;------------------------------------------------------------------------------------------------------
-; テキスト速度
+; Text Speed
 ;------------------------------------------------------------------------------------------------------
 	[button name="ch,ch_100" fix="true" target="*ch_speed_change" graphic="&tf.btn_path_off" width="&tf.btn_w" height="&tf.btn_h" x="&tf.config_x[1]"  y="&tf.config_y_ch" exp="tf.set_ch_speed =100; tf.config_num_ch = 0"]
 	[button name="ch,ch_80"  fix="true" target="*ch_speed_change" graphic="&tf.btn_path_off" width="&tf.btn_w" height="&tf.btn_h" x="&tf.config_x[2]"  y="&tf.config_y_ch" exp="tf.set_ch_speed = 80; tf.config_num_ch = 1"]
@@ -146,7 +146,7 @@
 	[button name="ch,ch_5"   fix="true" target="*ch_speed_change" graphic="&tf.btn_path_off" width="&tf.btn_w" height="&tf.btn_h" x="&tf.config_x[10]" y="&tf.config_y_ch" exp="tf.set_ch_speed =  5; tf.config_num_ch = 9"]
 
 ;------------------------------------------------------------------------------------------------------
-; オート速度
+; Text Auto Speed
 ;------------------------------------------------------------------------------------------------------
 	[button name="auto,auto_5000" fix="true" target="*auto_speed_change" graphic="&tf.btn_path_off" width="&tf.btn_w" height="&tf.btn_h" x="&tf.config_x[1]"  y="&tf.config_y_auto" exp="tf.set_auto_speed = 5000; tf.config_num_auto = 0"]
 	[button name="auto,auto_4500" fix="true" target="*auto_speed_change" graphic="&tf.btn_path_off" width="&tf.btn_w" height="&tf.btn_h" x="&tf.config_x[2]"  y="&tf.config_y_auto" exp="tf.set_auto_speed = 4500; tf.config_num_auto = 1"]
@@ -160,17 +160,17 @@
 	[button name="auto,auto_500"  fix="true" target="*auto_speed_change" graphic="&tf.btn_path_off" width="&tf.btn_w" height="&tf.btn_h" x="&tf.config_x[10]" y="&tf.config_y_auto" exp="tf.set_auto_speed =  500; tf.config_num_auto = 9"]
 
 ;------------------------------------------------------------------------------------------------------
-; 未読スキップ
+; Skip Unread
 ;------------------------------------------------------------------------------------------------------
 
-;	未読スキップ-OFF
+;	Skip Unread-OFF
 	[button name="unread_off" fix="true" target="*skip_off" graphic="&tf.btn_path_off" width="170" height="45" x="400" y="470"]
 
-;	未読スキップ-ON
+;	Skip Unread-ON
 	[button name="unread_on"  fix="true" target="*skip_on"  graphic="&tf.btn_path_off" width="170" height="45" x="580" y="470"]
 
 ;------------------------------------------------------------------------------------------------------
-; コンフィグ起動時の画面更新
+; Config Startup Screen Refresh
 ;------------------------------------------------------------------------------------------------------
 
 	[iscript]
@@ -193,37 +193,37 @@
 [s]
 
 ;--------------------------------------------------------------------------------
-; コンフィグモードの終了
+; Exit Config Mode
 ;--------------------------------------------------------------------------------
 *backtitle
 [cm]
 
 	[iscript]
-	TG.config.alreadyReadTextColor = tf.user_setting; // 既読テキストの文字色を復帰
+	TG.config.alreadyReadTextColor = tf.user_setting; // Restore the text color of read text
 	[endscript]
 
-;	テキスト速度のサンプル表示に使用していたメッセージレイヤを非表示に
+;	Hide message layer used to display text-speed sample
 	[layopt layer="message1" visible="false"]
 
-;	fixボタンをクリア
+;	Clear fix button
 	[clearfix]
 
-;	キーコンフィグの有効化
+;	Enable key config
 	[start_keyconfig]
 
-;	コールスタックのクリア
+;	Clear call stack
 	[clearstack]
 
-;	ゲーム復帰
+;	Return to game
 	[awakegame]
 
 ;================================================================================
 
-; ボタンクリック時の処理
+; Keypress Processing
 
 ;================================================================================
 ;--------------------------------------------------------------------------------
-; BGM音量
+; BGM Volume
 ;--------------------------------------------------------------------------------
 *vol_bgm_change
 
@@ -237,7 +237,7 @@
 [return]
 
 ;--------------------------------------------------------------------------------
-; SE音量
+; SE Volume
 ;--------------------------------------------------------------------------------
 *vol_se_change
 
@@ -251,7 +251,7 @@
 [return]
 
 ;---------------------------------------------------------------------------------
-; テキスト速度
+; Text Speed
 ;--------------------------------------------------------------------------------
 *ch_speed_change
 
@@ -265,20 +265,20 @@
 
 	[configdelay speed="&tf.set_ch_speed"]
 
-;	テキスト表示速度のサンプルに使用するメッセージレイヤの設定
+;	Setting message layer used for text speed sample display
 	[position layer="message1" left="90" top="580" width="1100" height="100" margint="2" marginl="30" page="fore" visible="true" opacity="0"]
 	[layopt layer="message1" visible="true"]
 	[current layer="message1"]
 
-;	サンプルテキストを表示する
+;	Display text-speed sample text
 	[emb exp="tf.text_sample"]
 
 		[iscript]
-		$(".current_span").css("color","#66564C"); // サンプルテキストのフォントカラーを指定
-		tf.system.backlog.pop(); // サンプルテキストを履歴から削除（nolog～endnologタグと同じです）
+		$(".current_span").css("color","#66564C"); // Set sample text font color
+		tf.system.backlog.pop(); // Delete sample text from history (same as "nolog~endnolog" tags)
 		[endscript]
 
-;	待ち時間をテキスト速度とサンプルの文字数に対応（消えるのが早すぎるときは後ろの数字を好きなだけ増やそう）
+;	Supports waiting time for text speed and number of characters in sample (if it disappears too quickly, increase the number behind it as needed) 
 	[eval exp="tf.text_sample_speed = tf.set_ch_speed * tf.text_sample.length + 700"]
 	[wait time="&tf.text_sample_speed"]
 
@@ -288,7 +288,7 @@
 [return]
 
 ;--------------------------------------------------------------------------------
-; オート速度
+; Text Auto Speed
 ;--------------------------------------------------------------------------------
 *auto_speed_change
 
@@ -303,7 +303,7 @@
 [return]
 
 ;--------------------------------------------------------------------------------
-; スキップ処理-OFF
+; Skip Processing-OFF
 ;--------------------------------------------------------------------------------
 *skip_off
 
@@ -318,7 +318,7 @@
 [return]
 
 ;--------------------------------------------------------------------------------
-; スキップ処理-ON
+; Skip Processing-ON
 ;--------------------------------------------------------------------------------
 *skip_on
 
@@ -334,19 +334,19 @@
 
 ;================================================================================
 
-; サブルーチン
+; Subroutines
 
 ;================================================================================
 ;--------------------------------------------------------------------------------
 
-; BGM更新
+; Update BGM
 
 ;--------------------------------------------------------------------------------
 *icon_bgm
 
 	[iscript]
 
-	// 設定した音量によって色付き画像の表示・非表示を切替える
+	// Switch the display / non-display of the colored image according to the set volume
 
 	$( ".bgm_img_0").css( "visibility", tf.config_num_bgm == 0 ? 'visible' : 'hidden' );
 	$( ".bgm_img_1").css( "visibility", tf.config_num_bgm >  0 ? 'visible' : 'hidden' );
@@ -366,7 +366,7 @@
 
 ;--------------------------------------------------------------------------------
 
-; SE更新
+; Update SE
 
 ;--------------------------------------------------------------------------------
 *icon_se
@@ -391,7 +391,7 @@
 
 ;--------------------------------------------------------------------------------
 
-; テキスト速度更新
+; Update Text Speed
 
 ;--------------------------------------------------------------------------------
 *icon_ch
@@ -415,7 +415,7 @@
 
 ;--------------------------------------------------------------------------------
 
-; オート速度更新
+; Update Auto Text Speed
 
 ;--------------------------------------------------------------------------------
 *icon_auto
@@ -439,7 +439,7 @@
 
 ;================================================================================
 
-; 画像の読み込み（コンフィグ画面の起動時のみコール）
+; Image loading (call only when the config screen is started)
 
 ;================================================================================
 *load_img
@@ -472,7 +472,7 @@
 	[image layer="0" name="se_img_9"  storage="&tf.img_path + 'set2.png'" x="&tf.config_x[9]"  y="&tf.config_y_se"]
 	[image layer="0" name="se_img_10" storage="&tf.img_path + 'set2.png'" x="&tf.config_x[10]" y="&tf.config_y_se"]
 
-;	テキスト速度
+;	Text Speed
 	[image layer="0" name="ch_img_1"  storage="&tf.img_path + 'set1.png'" x="&tf.config_x[1]"  y="&tf.config_y_ch"]
 	[image layer="0" name="ch_img_2"  storage="&tf.img_path + 'set1.png'" x="&tf.config_x[2]"  y="&tf.config_y_ch"]
 	[image layer="0" name="ch_img_3"  storage="&tf.img_path + 'set1.png'" x="&tf.config_x[3]"  y="&tf.config_y_ch"]
@@ -484,7 +484,7 @@
 	[image layer="0" name="ch_img_9"  storage="&tf.img_path + 'set1.png'" x="&tf.config_x[9]"  y="&tf.config_y_ch"]
 	[image layer="0" name="ch_img_10" storage="&tf.img_path + 'set1.png'" x="&tf.config_x[10]" y="&tf.config_y_ch"]
 
-;	オート速度
+;	Auto Text SPeed
 	[image layer="0" name="auto_img_1"  storage="&tf.img_path + 'set2.png'"  x="&tf.config_x[1]"  y="&tf.config_y_auto"]
 	[image layer="0" name="auto_img_2"  storage="&tf.img_path + 'set2.png'"  x="&tf.config_x[2]"  y="&tf.config_y_auto"]
 	[image layer="0" name="auto_img_3"  storage="&tf.img_path + 'set2.png'"  x="&tf.config_x[3]"  y="&tf.config_y_auto"]

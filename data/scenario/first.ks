@@ -6,7 +6,7 @@
 
 
 ; Convenient standard TyranoScript libraries
-; Required when using config, CG, and Recollection Mode
+; Required when using config, CG, and Recollection modes
 @call storage="tyrano.ks"
 
 ; You should put any absolutely-necessary initialization processes in this file.
