@@ -1,70 +1,70 @@
-TyranoScript｜ティラノスクリプト　Ver5.00（C）ShikemokuMK
+TyranoScript ｜ Tyranoscript Ver5.00 (C) ShikemokuMK
 http://tyrano.jp
 
 
-■主な特徴■
+■ Main features ■
 
-①　HTMLとJavaScriptで動作します
+① Works with HTML and JavaScript
 
-iphone、ipad、アンドロイドなどの端末で動作させることが可能です。
-また、PhoneGapなどのツールを使うことでアプリ化して
-AppStoreやアンドロイドマーケットで販売することができます。
+It can be operated on devices such as iPhone, iPad, and Android.
+Also, by using tools such as PhoneGap, you can make it into an application.
+It can be sold on the App Store and Android Market.
 
-もちろん、ブラウザゲームとして動作させたり
-拡張パックを使用することでウィンドウズアプリケーション・Macアプリケーションとしても配布できます。
+Of course, you can run it as a browser game.
+It can also be distributed as a Windows application or Mac application by using an expansion pack.
 
-②　KAG３/吉里吉里との高い親和性
+② High affinity with KAG3 / Kirikiri
 
-ティラノスクリプトはKAG3/吉里吉里と高い親和性があります。
-タグ型のスクリプトツールを使用したことがあれば、すぐに制作に取り掛かれます。
+Tyranoscript has a high affinity with KAG3 / KiriKiri.
+If you've used tag-based scripting tools, you're ready to go.
 
-③　JavaScriptとのスムーズな連携
+③ Smooth cooperation with JavaScript
 
-ティラノスクリプトでは、JavaScriptを自由に記述して拡張することが可能です。
+Tyranoscript allows you to freely write and extend JavaScript.
 
-④　フリー。商用利用可
+④ Free. Commercially available
 
-無料でご利用下さい。商用利用も可能です。
-また、ソースコードも公開されており、改造も自由です。
+Please use it for free. Commercial use is also possible.
+In addition, the source code is also open to the public, and you can freely modify it.
 
-■使い方■
+■ How to use ■
 
-公式ページにチュートリアルとタグリファレンスがありますので参考にしてください
+Please refer to the tutorial and tag reference on the official page.
 
-【タグリファレンス】
+[Tag reference]
 http://tyrano.jp/home/tag
 
-【使い方＆チュートリアル】
+[How to use & tutorial]
 http://tyrano.jp/usage/tutorial
 
 
-■ティラノビルダー■
+■ TyranoBuilder ■
 http://b.tyrano.jp
-ティラノスクリプトの公式開発ツールです。ゲーム制作が楽になります。
+The official development tool for Tyranoscript. Game production will be easier.
 
-■ティラノライダー■
+■ TyranoRider ■
 http://tyrano.jp/adv/next/rider
-公式デバッグツールです。変数ウォッチなどの開発をサポートする機能があります。
+Official debugging tool. There are functions that support the development of variable watches and the like.
 
-■利用規約■
-ティラノスクリプトは無料でご利用いただけます。
-商用利用にも制限はありません。
-作品の製作が目的であれば、改造に制限はありません
+■ Terms of use ■
+Tyranoscript is available free of charge.
+There are no restrictions on commercial use.
+If the purpose is to produce a work, there are no restrictions on modification
 
-■禁止事項■
-・ティラノスクリプト自体の再配布はお控えください。
-・ティラノスクリプトをスマホ変換ツールの商材として扱う行為
+■ Prohibitions ■
+* Please refrain from redistributing the Tyranoscript itself.
+* Act of treating Tyranoscript as a product of smartphone conversion tool.
 
-該当する場合は、事前に開発者までご相談ください。
+If applicable, please contact the developer in advance.
 
-■免責事項■
+■ Disclaimer ■
 
-本ツールを利用したことによって損害・不利益・事故等が
-発生した場合でも、一切の責任を負いません。
+Damage, disadvantage, accident, etc. caused by using this tool.
+Even if it occurs, we do not take any responsibility.
 
-■連絡先■
+■ Contact information ■
 
-メール
+Email
 shikemokumk@gmail.com
 
 Twitter
@@ -72,87 +72,87 @@ http://twitter.com/shikemokumk
 
 
 
-■謝辞■
+■ Acknowledgments ■
 
-また、プログラム作成にあたり、以下のプログラム・ソースコードを参考に
-しました。
+Also, when creating the program, refer to the following program source code.
+Did.
 
-・吉里吉里２ SDK（KAG・TJSのソースおよびドキュメントなど）
+* KiriKiri 2 SDK (KAG / TJS sources and documents, etc.)
 Copyright (C) 1997-2008 W.Dee
 http://kikyou.info/
 
 
-■主な更新履歴■
+■ Main update history ■
 
----------------------------------------------------------------------
+-------------------------------------------------- -------------------
 Ver4.5
-レイヤーモード実装、キーコンフィグ対応
-デフォルトUIリニューアルなど
+Layer mode implementation, key config support
+Default UI renewal etc.
 
-Ver4.0 
-ティラノライダー対応
-CG、コンフィグ、リプレイ追加
-音量調整追加　など
+Ver4.0
+TyranoRider compatible
+CG, config, replay added
+Volume adjustment added, etc.
 
 Ver3.20
-選択肢、クリッカブルにおいてもセーブが実行できるようになりました。
+You can now save even if you have a choice or clickable.
 
 Ver3.14
-スキップ安定化施策など
+Skip stabilization measures, etc.
 
 Ver3.0
-ティラノビルダー対応
+Compatible with TyranoRider
 
 Ver2.80
-iOS7 対応
-storageにhttpを指定可能へ
+Compatible with iOS7
+http can be specified for storage
 
 Ver2.60
-ライセンスをオープンソース。MITライセンスに変更
+Open source the license. Change to MIT license
 
 Ver2.50
-メニュー画面のカスタマイズ対応
-ティラノスクリプトブースターパック
+Menu screen customization support
+Tyranoscript Booster Pack
 
 Ver2.40
-キーフレームアニメーションの追加
-トランジションのエフェクト追加
-その他、修正
+Add keyframe animation
+Added transition effects
+Other corrections
 
 Ver2.30
-セーブ画面のカスタマイズ対応
-Fixレイヤーの追加
-[savesnap][clearfix]タグなどの追加
+Support for customizing the save screen
+Add Fix layer
+Addition of [savesnap] [clearfix] tags, etc.
 
 Ver2.20
-glyphタグ追加。その他バグ修正など
+Added glyph tag. Other bug fixes, etc.
 
 Ver2.10
-Windowsアプリケーションとして配布可能になりました
+Now available as a Windows application
 
-Ver2.01 
-FireFoxなどの音楽再生修正
-TG変数の追加
+Ver2.01
+Music playback corrections such as FireFox
+Add TG variable
 
-Ver2.00 
-アプリ変換を強化。など
+Ver2.00
+Enhanced app conversion. Such
 
-Ver1.01 
-[call]時にラベルを指定しなかった場合、最初の命令が飛ばされるバグを修正
+Ver1.01
+Fixed a bug that the first instruction is skipped if the label is not specified at the time of [call]
 
-Ver1.00 　(2012 / 09 /24)
-クリッカブルタグを追加
-キャラクタータグの追加
-その他、バグ修正
+Ver1.00 (2012/09/24)
+Added clickable tags
+Add character tag
+Other bug fixes
 
 Ver0.11
-すべての環境でMP3再生に対応（FLASH再生エンジン投入）
+Supports MP3 playback in all environments (FLASH playback engine introduced)
 
 Ver0.10 (2012/09/10)
-ベータ版リリース
+Beta release
 
 V0.01 (2012/08/21)
-実験版リリース！
+Experimental version released!
 
----------------------------------------------------------------------
+-------------------------------------------------- ------------------- 
 
