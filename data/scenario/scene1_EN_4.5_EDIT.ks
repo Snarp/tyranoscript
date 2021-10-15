@@ -103,10 +103,10 @@ Huh. That's cool, I guess.[p]
 [chara_mod  name="akane" face="happy"  ]
 #Akane
 R-really!?[p]
-You can learn TyranoScript's functions just by playing this game -[p]
+You can learn Tyranoscript's functions just by playing this game -[p]
 - So, please, stay with me until the end![p]
 
-First, TyranoScript works with [font color="red"]「HTML5」[resetfont].[p]
+First, Tyranoscript works with [font color="red"]「HTML5」[resetfont].[p]
 
 
 #
@@ -118,7 +118,7 @@ Oh. That's cool.[p]
 If I make a game, I'd like a lot of people to be able to play it.[p]
 
 #Akane
-Naturally, TyranoScript games can run on Windows PCs.[p]
+Naturally, Tyranoscript games can run on Windows PCs.[p]
 It supports MacOS, too![p]
 And since it's HTML5, you can deploy your games in the browser.[p]
 Just paste the code into a website, and anyone can play your game![p]
@@ -160,7 +160,7 @@ It's cold! Let's go back into the classroom.[p]
 Oh, the scene transition animation was a little different this time.[p]
 #Akane
 Yeah, I was in a hurry.[p]
-TyranoScript lets you use all kinds of visual effects -[p]
+Tyranoscript lets you use all kinds of visual effects -[p]
 - More than 10 kinds of screen transition effects.[p]
 #
 Hm. That's convenient.[p]
@@ -168,7 +168,7 @@ Hm. That's convenient.[p]
 #Akane
 Next, let's change the message display method.[p]
 In addition to adventure games, like you're playing now,[r]
-TyranoScript can also be used to make full-screen games like visual novels.[p]
+Tyranoscript can also be used to make full-screen games like visual novels.[p]
 
 #
 
@@ -180,7 +180,7 @@ TyranoScript can also be used to make full-screen games like visual novels.[p]
 [position layer="message0" left=20 top=40 width=1200 height=660 page=fore visible=true ]
 
 What do you think? This method is good if you want to read carefully. [l][r]
-TyranoScript is extremely powerful and flexible.[l][cm]
+Tyranoscript is extremely powerful and flexible.[l][cm]
 
 [font size=40]Change the font size
 [l][r]
@@ -350,7 +350,7 @@ Oh, I'm sorry -- you're excused. Thank you![l][cm]
 [chara_hide name="yamato"]
 
 #akane
-This concludes my explanation of the basics of TyranoScript.[p]
+This concludes my explanation of the basics of Tyranoscript.[p]
 What do you think?[p]
 
 #
@@ -358,13 +358,13 @@ Yeah, I feel like I can make a game like this.[p]
 
 #Akane
 That's great![p]
-To get started, you should try the official TyranoScript tutorial![p]
+To get started, you should try the official Tyranoscript tutorial![p]
 (Hope you speak Japanese.)[p]
-Since this game also runs on TyranoScript, its code should be helpful.[p]
+Since this game also runs on Tyranoscript, its code should be helpful.[p]
 Good luck making your game![p]
 And thanks for playing.[p]
 
-To wrap things up, I'll link you to some useful information on TyranoScript.[p]
+To wrap things up, I'll link you to some useful information on Tyranoscript.[p]
 Please check it out. (If you speak Japanese.)[p]
 
 [cm]
@@ -392,7 +392,7 @@ Please check it out. (If you speak Japanese.)[p]
 [font color-"red"]
 "Tyranobuilder"
 [resetfont]
-is a free TyranoScript development tool.[p]
+is a free Tyranoscript development tool.[p]
 
 [image layer=1 page=fore visible=true top=10 left=50 width=560 height=400  storage = builder.png]
 
@@ -406,7 +406,7 @@ Even those who don't know scripting can use it -- give it a try![p]
 *example
 @layopt layer=message0 visible=true
 @layopt layer=fix visible=true
-Many games have been created using TyranoScript.[p]
+Many games have been created using Tyranoscript.[p]
 Please check out the official website for some examples.[p]
 
 [iscript]
@@ -421,7 +421,7 @@ window.open("http://tyrano.jp/home/example");
 *tech
 @layopt layer=message0 visible=true
 @layopt layer=fix visible=true
-This demo game teaches only a small sample of TyranoScript's features.[p]
+This demo game teaches only a small sample of Tyranoscript's features.[p]
 To learn more, try downloading more examples.[p]
 Be sure to look at the demo code![p]
 
@@ -435,7 +435,7 @@ window.open("http://tyrano.jp/home/demo");
 *info
 @layopt layer=message0 visible=true
 @layopt layer=fix visible=true
-If you have questions about TyranoScript, check out the forums.[p]
+If you have questions about Tyranoscript, check out the forums.[p]
 There is also a Wiki that you can refer to.[p]
 @jump target=button_link
 
