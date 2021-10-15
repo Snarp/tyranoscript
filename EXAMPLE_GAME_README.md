@@ -1,6 +1,6 @@
 # How do I run the example game?
 
-To run TyranoScript games on your own computer, you need to open a local HTTP server (a webserver) for [`data`](./data), the subdirectory that contains the example game code.
+To run TyranoScript games on your own computer, you need to open a local HTTP server (a webserver) to serve the files in this directory.
 
 There are a lot of different ways to do this. Three common ones are described below.
 
@@ -9,7 +9,7 @@ There are a lot of different ways to do this. Three common ones are described be
 
 1. Download a portable HTTP server program like [Mongoose](https://mongoose.ws/desktop-app/) or [TinyWeb](https://www.ritlabs.com/en/products/tinyweb/).
 
-2. Copy-paste its `.exe` file inside the `data` folder, and double-click on it.
+2. Copy-paste its `.exe` file inside this folder (`tyranoscript`), and double-click on it.
 
 3. The server should give you an address. Type that address into your web browser to play the example game.
 
@@ -23,7 +23,7 @@ If you're going to be working with TyranoScript (or Javascript in general), you'
 With Node and NPM installed, open your terminal in the `data` directory and do this:
 
 ```bash
-cd data                          # move into the `data` directory, if necessary
+cd tyranoscript                  # move into the directory, if necessary
 npm install --global http-server # install the 'http-server' package
 http-server                      # launch the server
 ```
@@ -45,7 +45,7 @@ In your web browser, go to one of the addresses that it gives you - in this case
 Python comes with a simple HTTP server. If you use Linux, you probably already have Python installed. [This tutorial explains in detail how to launch the server](https://developer.mozilla.org/en-US/docs/Learn/Common_questions/set_up_a_local_testing_server), but the short version is:
 
 ```bash
-cd data                    # move into the `data` directory, if necessary
+cd tyranoscript            # move into the directory, if necessary
 python3 -m http.server     # type this if you have Python 3...
 python -m SimpleHTTPServer # ...or this if you have Python 2
 ```
