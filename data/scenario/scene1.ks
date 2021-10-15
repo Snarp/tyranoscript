@@ -63,7 +63,7 @@ Hello.[p]
 My name is Akane.[p]
 #Akane
 Could it be that you're interested in developing a visual novel?[p]
-;FIXME: In English, all the whitespace is stripped out of the button text, giving you "Yes,Iam." and "Iguess..."
+;FIXME: In English, all the whitespace is stripped out of the "glink" button text, giving you "Yes,Iam." and "Iguess..."
 [glink  color="blue"  storage="scene1.ks"  size="28"  x="360"  width="500"  y="150"  text="Yes, I am."  target="*selectinterest"  ]
 [glink  color="blue"  storage="scene1.ks"  size="28"  x="360"  width="500"  y="250"  text="Absolutely!"  target="*selectinterest"  ]
 [glink  color="blue"  storage="scene1.ks"  size="28"  x="360"  width="500"  y="350"  text="I guess..."  target="*selectinterest"  ]
@@ -335,7 +335,6 @@ You've just learned how to create story branches.[l][cm]
 #Akane
 Now, let's introduce another character --[l][cm]
 - Yamato.[p]
-
 [chara_show name="yamato"]
 
 -- Just like that. Simple, right?[l][r]
@@ -359,7 +358,6 @@ Yeah, I feel like I can make a game like this.[p]
 #Akane
 That's great![p]
 To get started, you should try the official TyranoScript tutorial![p]
-(Hope you speak Japanese.)[p]
 Since this game also runs on TyranoScript, its code should be helpful.[p]
 Good luck making your game![p]
 And thanks for playing.[p]
